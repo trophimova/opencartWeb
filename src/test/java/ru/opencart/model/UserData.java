@@ -1,4 +1,4 @@
-package ru.opencart;
+package ru.opencart.model;
 
 public class UserData {
     private final String userFirstname;
