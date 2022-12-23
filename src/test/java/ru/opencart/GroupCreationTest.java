@@ -21,7 +21,7 @@ public class GroupCreationTest {
 
     private void registration() {
         gotoRegPage();
-        fillRegForm();
+        fillRegForm(new UserData("Cthutq", "sdfghjkl", "test@mail.ru", "88888888", "123456", "123456"));
         confirmRegForm();
     }
 
@@ -29,19 +29,19 @@ public class GroupCreationTest {
         wd.findElement(By.cssSelector(".btn-primary")).click();
     }
 
-    private void fillRegForm() {
+    private void fillRegForm(UserData userData) {
         wd.findElement(By.id("input-firstname")).click();
-        wd.findElement(By.id("input-firstname")).sendKeys("Cthutq");
+        wd.findElement(By.id("input-firstname")).sendKeys(userData.getUserFirstname());
         wd.findElement(By.id("input-lastname")).click();
-        wd.findElement(By.id("input-lastname")).sendKeys("sdfghjkl");
+        wd.findElement(By.id("input-lastname")).sendKeys(userData.getUserLastname());
         wd.findElement(By.id("input-email")).click();
-        wd.findElement(By.id("input-email")).sendKeys("test@mail.ru");
+        wd.findElement(By.id("input-email")).sendKeys(userData.getEmail());
         wd.findElement(By.id("input-telephone")).click();
-        wd.findElement(By.id("input-telephone")).sendKeys("88888888");
+        wd.findElement(By.id("input-telephone")).sendKeys(userData.getTelephone());
         wd.findElement(By.id("input-password")).click();
-        wd.findElement(By.id("input-password")).sendKeys("123456");
+        wd.findElement(By.id("input-password")).sendKeys(userData.getPassword());
         wd.findElement(By.id("input-confirm")).click();
-        wd.findElement(By.id("input-confirm")).sendKeys("123456");
+        wd.findElement(By.id("input-confirm")).sendKeys(userData.getConfirmPassword());
         wd.findElement(By.name("agree")).click();
     }
 
@@ -52,8 +52,8 @@ public class GroupCreationTest {
 
     @Test
     public void testPositiveRegistration() {
-
-        wd.get("https://learn-qa.ru/index.php?route=product/category&path=33");  //здесь должна быть проверка успешной регистрации
+        //здесь должна быть проверка успешной регистрации
+        wd.get("https://learn-qa.ru/index.php?route=product/category&path=33");
     }
 
 
