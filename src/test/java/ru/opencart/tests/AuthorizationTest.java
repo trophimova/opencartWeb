@@ -7,11 +7,12 @@ public class AuthorizationTest extends TestBase {
 
     @Test
     public void testPositiveAuthorization() {
+        app.getNavigationHelper().gotoRegPage();
         app.getRegistrationHelper().registration();
-        app.gotoLoginPage();
-        app.login();
+        app.getNavigationHelper().gotoLoginPage();
+        app.getSessionHelper().login();
 
-        //здесь должна быть проверка успешной авторизации
+
 
     }
 

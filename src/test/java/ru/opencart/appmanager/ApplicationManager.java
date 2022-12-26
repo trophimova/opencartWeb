@@ -1,48 +1,46 @@
 package ru.opencart.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
-    private final RegistrationHelper registrationHelper = new RegistrationHelper();
+    ChromeDriver wd;
 
-    public static boolean isAlertPresent(ChromeDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
+    private SessionHelper sessionHelper;
+    private NavigationHelper navigationHelper;
+    private RegistrationHelper registrationHelper;
+    private CartHelper cartHelper;
+
 
     public void init() {
-        registrationHelper.wd = new ChromeDriver();
-        registrationHelper.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        registrationHelper.wd.get("https://learn-qa.ru");
-        //registration();
-        //login();
-    }
-
-    public void gotoLoginPage() {
-        registrationHelper.wd.get("https://learn-qa.ru/index.php?route=account/login");
+        wd = new ChromeDriver();
+        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.get("https://learn-qa.ru");
+        registrationHelper = new RegistrationHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
+        sessionHelper = new SessionHelper(wd);
+        //cartHelper = new CartHelper(wd);
     }
 
     public void stop() {
-        registrationHelper.wd.quit();
+        wd.quit();
     }
 
-    public void login() {
-        registrationHelper.wd.findElement(By.id("input-email")).click();
-        registrationHelper.wd.findElement(By.id("input-email")).sendKeys("test@mail.ru");
-        registrationHelper.wd.findElement(By.id("input-password")).click();
-        registrationHelper.wd.findElement(By.id("input-password")).sendKeys("123456");
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
     }
 
     public RegistrationHelper getRegistrationHelper() {
         return registrationHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
+    }
+
+    public CartHelper getCartHelper() {
+        return cartHelper;
     }
 }
