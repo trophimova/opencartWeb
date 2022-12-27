@@ -1,11 +1,12 @@
 package ru.opencart.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+
 
 public class CartHelper extends HelperBase {
 
-    public CartHelper(ChromeDriver wd) {
+    public CartHelper(WebDriver wd) {
         super(wd);
     }
 

@@ -1,10 +1,11 @@
 package ru.opencart.appmanager;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+
 
 public class NavigationHelper extends HelperBase {
 
-    public NavigationHelper(ChromeDriver wd) {
+    public NavigationHelper(WebDriver wd) {
         super(wd);
     }
 

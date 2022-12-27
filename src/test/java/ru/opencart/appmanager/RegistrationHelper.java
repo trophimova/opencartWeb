@@ -1,12 +1,12 @@
 package ru.opencart.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 import ru.opencart.model.UserData;
 
 public class RegistrationHelper extends HelperBase {
 
-    public RegistrationHelper(ChromeDriver wd) {
+    public RegistrationHelper(WebDriver wd) {
         super(wd);
     }
 
