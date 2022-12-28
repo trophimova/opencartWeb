@@ -2,11 +2,8 @@ package ru.opencart.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import ru.opencart.model.RegData;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class RegistrationHelper extends HelperBase {
 
@@ -39,15 +36,4 @@ public class RegistrationHelper extends HelperBase {
         click(By.name("agree"));
     }
 
-
-//    public List<RegData> getRegList() {
-//        List<RegData> regs = new ArrayList<RegData>();
-//        List<WebElement> elements = wd.findElements(By.className("form-control"));
-//        for (WebElement element : elements) {
-//            String name = element.getText();
-//            RegData reg = new RegData(name, name, name, name, name, name);
-//            regs.add(reg);
-//        }
-//        return regs;
-//    }
 }

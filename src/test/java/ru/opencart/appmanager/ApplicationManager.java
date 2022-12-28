@@ -31,12 +31,12 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wd.get("https://learn-qa.ru");
         registrationHelper = new RegistrationHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         authHelper = new AuthHelper(wd);
-        //cartHelper = new CartHelper(wd);
+        cartHelper = new CartHelper(wd);
     }
 
     public void stop() {

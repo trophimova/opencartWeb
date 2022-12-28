@@ -3,7 +3,6 @@ package ru.opencart.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.opencart.model.AuthData;
-import ru.opencart.model.RegData;
 
 
 public class AuthHelper extends HelperBase {

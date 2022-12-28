@@ -20,7 +20,7 @@ public class NavigationHelper extends HelperBase {
 
     public void regPage() {
         if (isElementPresent(By.tagName("h1"))
-        && wd.findElement(By.tagName("h1")).getText().equals("Регистрация")) {
+                && wd.findElement(By.tagName("h1")).getText().equals("Регистрация")) {
             return;
         }
         wd.get("https://learn-qa.ru/index.php?route=account/register");
@@ -33,5 +33,9 @@ public class NavigationHelper extends HelperBase {
 //        }
 
         wd.get("https://learn-qa.ru/index.php?route=product/category&path=33");
+    }
+
+    public void gotoCart() {
+        wd.get("https://learn-qa.ru/index.php?route=checkout/cart");
     }
 }

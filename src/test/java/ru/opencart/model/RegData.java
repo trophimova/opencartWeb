@@ -1,6 +1,6 @@
 package ru.opencart.model;
 
-import java.util.Objects;
+
 
 public class RegData {
     private String userFirstname;
@@ -41,15 +41,6 @@ public class RegData {
         return this;
     }
 
-
-//    public RegData(String userFirstname, String userLastname, String email, String telephone, String password, String confirmPassword) {
-//        this.userFirstname = userFirstname;
-//        this.userLastname = userLastname;
-//        this.email = email;
-//        this.telephone = telephone;
-//        this.password = password;
-//        this.confirmPassword = confirmPassword;
-//    }
 
     public String getUserFirstname() {
         return userFirstname;
