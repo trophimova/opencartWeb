@@ -4,14 +4,10 @@ import org.testng.annotations.Test;
 
 public class AddToCartTest extends TestBase {
 
-    @Test
+    @Test(enabled = false)
     public void testPositiveAddToCart() {
-        app.getNavigationHelper().gotoRegPage();
-        app.getRegistrationHelper().registration();
-        //app.getNavigationHelper().gotoLoginPage();
-        //app.getSessionHelper().login();
-        app.getNavigationHelper().gotoProductPage();
-        //app.getCartHelper().addToCart();
+        app.goTo().gotoProductPage();
+        app.cart().addToCart();
 
 
     }

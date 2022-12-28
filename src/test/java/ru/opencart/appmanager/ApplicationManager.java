@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.BrowserType;
 
 
@@ -14,7 +13,7 @@ public class ApplicationManager {
 
     WebDriver wd;
 
-    private SessionHelper sessionHelper;
+    private AuthHelper authHelper;
     private NavigationHelper navigationHelper;
     private RegistrationHelper registrationHelper;
     private CartHelper cartHelper;
@@ -32,11 +31,11 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wd.get("https://learn-qa.ru");
         registrationHelper = new RegistrationHelper(wd);
         navigationHelper = new NavigationHelper(wd);
-        sessionHelper = new SessionHelper(wd);
+        authHelper = new AuthHelper(wd);
         //cartHelper = new CartHelper(wd);
     }
 
@@ -44,19 +43,19 @@ public class ApplicationManager {
         wd.quit();
     }
 
-    public SessionHelper getSessionHelper() {
-        return sessionHelper;
+    public AuthHelper authorization() {
+        return authHelper;
     }
 
-    public RegistrationHelper getRegistrationHelper() {
+    public RegistrationHelper registration() {
         return registrationHelper;
     }
 
-    public NavigationHelper getNavigationHelper() {
+    public NavigationHelper goTo() {
         return navigationHelper;
     }
 
-    public CartHelper getCartHelper() {
+    public CartHelper cart() {
         return cartHelper;
     }
 }
