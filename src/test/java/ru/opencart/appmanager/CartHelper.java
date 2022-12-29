@@ -3,6 +3,7 @@ package ru.opencart.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ru.opencart.model.ProductData;
 
 
 public class CartHelper extends HelperBase {
@@ -11,9 +12,9 @@ public class CartHelper extends HelperBase {
         super(wd);
     }
 
-    public void addToCart(String locator, By productGroup) {
-        click(productGroup);
-        addProduct(locator);
+    public void addToCart(ProductData productData) {
+        click(productData.getProductGroup());
+        addProduct(productData.getProductName());
     }
 
     private void addProduct(String cssSelector) {
@@ -31,8 +32,9 @@ public class CartHelper extends HelperBase {
         wd.findElement(By.xpath("//ul[@class = 'dropdown-menu pull-right']//strong")).click();
     }
 
-    public void deleteFromCart() {
-        click(By.xpath("//button[@class = 'btn btn-danger']"));
+    public void deleteFromCart(int index) {
+        wd.findElements(By.xpath("//button[@class = 'btn btn-danger']")).get(index).click();
+        //click(By.xpath("//button[@class = 'btn btn-danger']"));
     }
 
     public boolean isThereAProduct() {
