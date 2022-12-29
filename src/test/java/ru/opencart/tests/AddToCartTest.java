@@ -10,8 +10,8 @@ public class AddToCartTest extends TestBase {
     public void testAddToCart() {
         app.goTo().gotoCart();
         int before = app.cart().count(By.xpath("//input[@size = '1']"));
-        app.goTo().gotoProductPage();
-        app.cart().addToCart();
+        app.cart().addToCart(".product-layout:nth-child(1) .caption a", By.cssSelector("li:nth-child(7) > a"));
+        app.cart().addToCart(".product-layout:nth-child(2) .caption a", By.cssSelector("li:nth-child(7) > a"));
         app.goTo().gotoCart();
         int after = app.cart().count(By.xpath("//input[@size = '1']"));
         Assert.assertEquals(after, before + 2);

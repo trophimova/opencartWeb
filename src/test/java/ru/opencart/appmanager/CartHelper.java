@@ -1,7 +1,6 @@
 package ru.opencart.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -12,18 +11,33 @@ public class CartHelper extends HelperBase {
         super(wd);
     }
 
-    public void addToCart() {
-        wd.manage().window().setSize(new Dimension(1936, 1056));
-        wd.findElement(By.cssSelector(".product-layout:nth-child(2) .hidden-xs")).click();
-        wd.findElement(By.cssSelector(".product-layout:nth-child(1) .hidden-xs")).click();
-        wd.findElement(By.id("input-option226")).click();
-        {
+    public void addToCart(String locator, By productGroup) {
+        click(productGroup);
+        addProduct(locator);
+    }
+
+    private void addProduct(String cssSelector) {
+        click(By.cssSelector(cssSelector));
+        if (isElementPresent(By.id("input-option226"))) {
+            click(By.id("input-option226"));
             WebElement dropdown = wd.findElement(By.id("input-option226"));
             dropdown.findElement(By.xpath("//option[@value= '15']")).click();
         }
-        wd.findElement(By.id("button-cart")).click();
+        click(By.id("button-cart"));
+    }
+
+    public void openCart() {
         wd.findElement(By.id("cart")).click();
         wd.findElement(By.xpath("//ul[@class = 'dropdown-menu pull-right']//strong")).click();
     }
+
+    public void deleteFromCart() {
+        click(By.xpath("//button[@class = 'btn btn-danger']"));
+    }
+
+    public boolean isThereAProduct() {
+        return isElementPresent(By.xpath("//input[@size = '1']"));
+    }
+
 
 }
