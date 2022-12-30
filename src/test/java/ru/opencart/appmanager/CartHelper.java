@@ -5,6 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.opencart.model.ProductData;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 public class CartHelper extends HelperBase {
 
@@ -12,9 +17,13 @@ public class CartHelper extends HelperBase {
         super(wd);
     }
 
-    public void addToCart(ProductData productData) {
-        click(productData.getProductGroup());
+    public void add(ProductData productData) {
+        chooseProductGroup(productData.getProductGroup());
         addProduct(productData.getProductName());
+    }
+
+    private void chooseProductGroup(String cssSelector) {
+        click(By.cssSelector(cssSelector));
     }
 
     private void addProduct(String cssSelector) {
@@ -32,13 +41,41 @@ public class CartHelper extends HelperBase {
         wd.findElement(By.xpath("//ul[@class = 'dropdown-menu pull-right']//strong")).click();
     }
 
-    public void deleteFromCart(int index) {
+    public void delete(int index) {
         wd.findElements(By.xpath("//button[@class = 'btn btn-danger']")).get(index).click();
-        //click(By.xpath("//button[@class = 'btn btn-danger']"));
     }
 
     public boolean isThereAProduct() {
         return isElementPresent(By.xpath("//input[@size = '1']"));
+    }
+
+
+
+
+    public List<ProductData> list() {
+        List<ProductData> products = new ArrayList<ProductData>();
+        List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
+        for (WebElement element : elements) {
+            String name = element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")).getText();
+            ProductData product = new ProductData()
+                    .withProductName(name)
+                    .withProductGroup(null);
+            products.add(product);
+        }
+        return products;
+    }
+
+    public Set<ProductData> all() {
+        Set<ProductData> products = new HashSet<>();
+        List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
+        for (WebElement element : elements) {
+            String name = element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")).getText();
+            ProductData product = new ProductData()
+                    .withProductName(name)
+                    .withProductGroup(null);
+            products.add(product);
+        }
+        return products;
     }
 
 
