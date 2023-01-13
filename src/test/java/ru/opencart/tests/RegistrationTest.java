@@ -11,7 +11,7 @@ public class RegistrationTest extends TestBase {
 
     @Test
     public void testPositiveRegistration() {
-        app.goTo().regPage();
+        app.goTo().gotoRegPage();
         int count = app.registration().count(By.className("form-control"));
         app.registration().registration();
         assertThat(6, equalTo(count - 1));

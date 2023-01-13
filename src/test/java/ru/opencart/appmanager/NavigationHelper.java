@@ -10,7 +10,11 @@ public class NavigationHelper extends HelperBase {
         super(wd);
     }
 
-    public void loginPage() {
+    public void gotoMainPage() {
+        wd.get("https://learn-qa.ru");
+    }
+
+    public void gotoLoginPage() {
         if (isElementPresent(By.tagName("h2"))
                 && wd.findElement(By.tagName("h2")).getText().equals("Зарегистрированный клиент")) {
             return;
@@ -18,7 +22,7 @@ public class NavigationHelper extends HelperBase {
         wd.get("https://learn-qa.ru/index.php?route=account/login");
     }
 
-    public void regPage() {
+    public void gotoRegPage() {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Регистрация")) {
             return;
