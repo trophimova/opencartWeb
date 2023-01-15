@@ -2,6 +2,7 @@ package ru.opencart.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.opencart.readProperties.ConfigProvider;
 
 
 public class NavigationHelper extends HelperBase {
@@ -11,7 +12,7 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void gotoMainPage() {
-        wd.get("https://learn-qa.ru");
+        wd.get(ConfigProvider.readConfig().getString("mainPage"));
     }
 
     public void gotoLoginPage() {

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
-    WebDriver wd;
+    public static WebDriver wd;
 
     private AuthHelper authHelper;
     private NavigationHelper navigationHelper;

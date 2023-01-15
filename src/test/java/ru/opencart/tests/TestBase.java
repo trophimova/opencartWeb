@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.opencart.appmanager.ApplicationManager;
 
-public abstract class TestBase {
+public class TestBase {
 
     protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
