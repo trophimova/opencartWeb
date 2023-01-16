@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-
+import ru.opencart.readProperties.ConfigProvider;
 
 
 import java.util.concurrent.TimeUnit;
@@ -16,11 +16,13 @@ public class ApplicationManager {
 
     public static WebDriver wd;
 
+
     private AuthHelper authHelper;
     private NavigationHelper navigationHelper;
     private RegistrationHelper registrationHelper;
     private CartHelper cartHelper;
     private String browser;
+
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -35,13 +37,15 @@ public class ApplicationManager {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--incognito");
-            options.addArguments("start-maximized");
+
             wd = new ChromeDriver(options);
         } else if (browser.equals(BrowserType.IE)) {
             WebDriverManager.iedriver().setup();
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        wd.manage().window().maximize();
+        wd.manage().timeouts().implicitlyWait(ConfigProvider.IMPLICITWAIT, TimeUnit.SECONDS);
         registrationHelper = new RegistrationHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         authHelper = new AuthHelper(wd);

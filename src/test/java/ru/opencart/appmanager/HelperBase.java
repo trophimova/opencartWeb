@@ -1,9 +1,7 @@
 package ru.opencart.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 
 
 public class HelperBase {
@@ -11,15 +9,21 @@ public class HelperBase {
 
     public HelperBase(WebDriver wd) {
         this.wd = wd;
+        PageFactory.initElements(wd, this);
     }
 
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
 
-    protected void type(By locator, String text) {
-        click(locator);
-        wd.findElement(locator).sendKeys(text);
+//    protected void type(By locator, String text) {
+//        wd.findElement(locator).click();
+//        wd.findElement(locator).sendKeys(text);
+//    }
+
+    protected void type(WebElement webElement, String authData) {
+        webElement.click();
+        webElement.sendKeys(authData);
     }
 
     public boolean isAlertPresent() {
@@ -44,4 +48,6 @@ public class HelperBase {
     public int count(By locator) {
         return wd.findElements(locator).size();
     }
+
+
 }

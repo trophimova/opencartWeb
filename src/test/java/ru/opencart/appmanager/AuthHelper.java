@@ -1,8 +1,10 @@
 package ru.opencart.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import ru.opencart.model.AuthData;
+import ru.opencart.readProperties.ConfigProvider;
 
 
 public class AuthHelper extends HelperBase {
@@ -13,23 +15,37 @@ public class AuthHelper extends HelperBase {
 
     public void login() {
         fillAuthForm(new AuthData()
-                .withEmail("tegg88st@mail.ru")
-                .withPassword("123456"));
+                .withEmail(ConfigProvider.USER_EMAIL)
+                .withPassword(ConfigProvider.USER_PASSWORD));
         confirmAuthForm();
     }
 
+
+
     public void fillAuthForm(AuthData authData) {
-        type(By.id("input-email"), authData.getEmail());
-        type(By.id("input-password"), authData.getPassword());
+        type(inputEmail, authData.getEmail());
+        type(inputPassword, authData.getPassword());
+
     }
+
 
     public void confirmAuthForm() {
-        click();
+        confirm();
     }
 
-    private void click() {
-        click(By.cssSelector(".btn-primary"));
+    private void confirm() {
+        submit.click();
     }
+
+
+    @FindBy(xpath = ".//input[@id='input-email']")
+    private WebElement inputEmail;
+
+    @FindBy(xpath = ".//input[@id='input-password']")
+    private WebElement inputPassword;
+
+    @FindBy(xpath = ".//input[@type='submit']")
+    private WebElement submit;
 
 
 }

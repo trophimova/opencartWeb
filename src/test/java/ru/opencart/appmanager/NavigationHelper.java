@@ -2,6 +2,8 @@ package ru.opencart.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import ru.opencart.readProperties.ConfigProvider;
 
 
@@ -12,7 +14,7 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void gotoMainPage() {
-        wd.get(ConfigProvider.readConfig().getString("mainPage"));
+        wd.get(ConfigProvider.MAINPAGE);
     }
 
     public void gotoLoginPage() {
@@ -32,15 +34,17 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void gotoProductPage() {
-//        if (isElementPresent(By.tagName("h2"))
-//                && wd.findElement(By.tagName("h2")).getText().equals("Камеры")) {
-//            return;
-//        }
-
         wd.get("https://learn-qa.ru/index.php?route=product/category&path=33");
     }
 
     public void gotoCart() {
         wd.get("https://learn-qa.ru/index.php?route=checkout/cart");
     }
+
+
+    @FindBy(xpath = ".//a[@title='Личный кабинет']")
+    private WebElement personalAccount;
+
+    @FindBy(xpath = ".//ul[@class='dropdown-menu dropdown-menu-right']//a")
+    private WebElement registration;
 }

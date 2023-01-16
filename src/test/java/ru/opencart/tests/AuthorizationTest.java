@@ -1,7 +1,6 @@
 package ru.opencart.tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -14,8 +13,10 @@ public class AuthorizationTest extends TestBase {
 
 
     @Test
-    @Owner("Anna Trofimova")
-    @Description("")
+    @Owner("Анна Трофимова")
+    @Description("Тест проверяет наличие двух полей для ввода данных")
+    @Link("https://github.com/trophimova/opencartWeb")
+    @Severity(SeverityLevel.BLOCKER)
     public void testPositiveAuthorization() {
         app.goTo().gotoLoginPage();
         int count = app.authorization().count(By.className("form-control"));
