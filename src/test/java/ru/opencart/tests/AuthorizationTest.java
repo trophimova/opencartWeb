@@ -20,8 +20,10 @@ public class AuthorizationTest extends TestBase {
     public void testPositiveAuthorization() {
         app.goTo().gotoLoginPage();
         int count = app.authorization().count(By.className("form-control"));
-        app.authorization().login();
         assertThat(2, equalTo(count - 1));
+        app.authorization().login();
+
+
     }
 
 

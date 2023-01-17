@@ -2,13 +2,18 @@ package ru.opencart.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class HelperBase {
     protected WebDriver wd;
+    protected WebDriverWait wait;
 
     public HelperBase(WebDriver wd) {
         this.wd = wd;
+
         PageFactory.initElements(wd, this);
     }
 

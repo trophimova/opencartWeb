@@ -1,12 +1,11 @@
 package ru.opencart.appmanager;
 
-import org.openqa.selenium.By;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import ru.opencart.model.RegData;
-import ru.opencart.readProperties.ConfigProvider;
+
 
 
 public class RegistrationHelper extends HelperBase {
@@ -16,11 +15,12 @@ public class RegistrationHelper extends HelperBase {
     }
 
     public void registration() {
+        Faker data = new Faker();
         fillRegForm(new RegData()
-                .withUserFirstname("Cthutq")
-                .withUserLastname("sdfghjkl")
-                .withEmail("tetggok9888st@mail.ru")
-                .withTelephone("88888888")
+                .withUserFirstname(data.name().firstName())
+                .withUserLastname(data.name().lastName())
+                .withEmail(data.internet().emailAddress())
+                .withTelephone(data.phoneNumber().cellPhone())
                 .withPassword("123456")
                 .withConfirmPassword("123456"));
         confirmRegForm();
@@ -40,7 +40,6 @@ public class RegistrationHelper extends HelperBase {
         checkbox.click();
     }
 
-    //private final By inputFirstname = By.xpath(".//input[@id='input-firstname']");
 
     @FindBy(xpath = ".//input[@id='input-firstname']")
     private WebElement inputFirstname;

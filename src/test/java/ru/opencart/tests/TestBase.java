@@ -21,9 +21,9 @@ public class TestBase {
         app.goTo().gotoMainPage();
     }
 
-    @AfterSuite
-    public void tearDown() {
-        app.stop();
-    }
+//    @AfterSuite
+//    public void tearDown() {
+//        app.stop();
+//    }
 
 }

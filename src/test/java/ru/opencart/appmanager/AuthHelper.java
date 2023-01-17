@@ -33,9 +33,11 @@ public class AuthHelper extends HelperBase {
         confirm();
     }
 
-    private void confirm() {
+    public void confirm() {
         submit.click();
     }
+
+
 
 
     @FindBy(xpath = ".//input[@id='input-email']")
@@ -47,5 +49,6 @@ public class AuthHelper extends HelperBase {
     @FindBy(xpath = ".//input[@type='submit']")
     private WebElement submit;
 
-
+    @FindBy(xpath = ".//div[@id='content']//h2[1]")
+    private WebElement myAccountTitle;
 }
