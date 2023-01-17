@@ -56,7 +56,7 @@ public class CartHelper extends HelperBase {
         List<ProductData> products = new ArrayList<ProductData>();
         List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
         for (WebElement element : elements) {
-            String name = element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")).getText();
+            String name = getNameTitle(element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")));
             ProductData product = new ProductData()
                     .withProductName(name)
                     .withProductGroup(null);
@@ -69,7 +69,7 @@ public class CartHelper extends HelperBase {
         Set<ProductData> products = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
         for (WebElement element : elements) {
-            String name = element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")).getText();
+            String name = getNameTitle(element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")));
             ProductData product = new ProductData()
                     .withProductName(name)
                     .withProductGroup(null);

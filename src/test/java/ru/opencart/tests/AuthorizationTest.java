@@ -2,7 +2,6 @@ package ru.opencart.tests;
 
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -18,12 +17,15 @@ public class AuthorizationTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.BLOCKER)
     public void testPositiveAuthorization() {
+        app.goTo().gotoMainPage();
         app.goTo().gotoLoginPage();
         int count = app.authorization().count(By.className("form-control"));
         assertThat(2, equalTo(count - 1));
         app.authorization().login();
-
-
+        app.authorization().title();
+        String nameTitle = app.authorization().getNameTitle();
+        assertThat(nameTitle, equalTo("Моя учетная запись"));
+        app.goTo().signOut();
     }
 
 

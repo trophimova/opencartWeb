@@ -1,16 +1,11 @@
 package ru.opencart.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.opencart.model.ProductData;
 
 import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,16 +28,16 @@ public class DeleteFromCartTest extends TestBase{
     }
 
     @Test
-    public void testDeleteFromCart() {
+    public void testPositiveDeleteFromCart() throws InterruptedException {
 
         List<ProductData> before = app.cart().list();
         int index = before.size() - 1;
         app.cart().delete(index);
+        Thread.sleep(1000l);
         List<ProductData> after = app.cart().list();
         Assert.assertEquals(after.size(), index);
 
         before.remove(index);
-        //Assert.assertEquals(before, after);
         assertThat(after, equalTo(before));
 
 

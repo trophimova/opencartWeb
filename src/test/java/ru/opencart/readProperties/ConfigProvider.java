@@ -13,9 +13,9 @@ public interface ConfigProvider {
     }
 
     String MAINPAGE = readConfig().getString("mainPage");
+    String BROWSER_OPTIONS = readConfig().getString("browserOptions");
     String USER_EMAIL = readConfig().getString("userParams.email");
     String USER_PASSWORD = readConfig().getString("userParams.password");
-
     int IMPLICITWAIT = readConfig().getInt("implicitWait");
 
 

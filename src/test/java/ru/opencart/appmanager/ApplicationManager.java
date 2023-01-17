@@ -4,11 +4,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.BrowserType;
 import ru.opencart.readProperties.ConfigProvider;
-
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,19 +33,21 @@ public class ApplicationManager {
 
         if (browser.equals(BrowserType.FIREFOX)) {
             WebDriverManager.firefoxdriver().setup();
-            wd = new FirefoxDriver();
+            FirefoxOptions options = new FirefoxOptions();
+
+            options.addArguments(ConfigProvider.BROWSER_OPTIONS);
+            wd = new FirefoxDriver(options);
         } else if (browser.equals(BrowserType.CHROME)) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--incognito");
-
+            options.addArguments(ConfigProvider.BROWSER_OPTIONS);
             wd = new ChromeDriver(options);
-        } else if (browser.equals(BrowserType.IE)) {
-            WebDriverManager.iedriver().setup();
-            wd = new InternetExplorerDriver();
+        } else if (browser.equals(BrowserType.EDGE)) {
+            WebDriverManager.edgedriver().setup();
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments(ConfigProvider.BROWSER_OPTIONS);
+            wd = new EdgeDriver(options);
         }
-
-        wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(ConfigProvider.IMPLICITWAIT, TimeUnit.SECONDS);
         registrationHelper = new RegistrationHelper(wd);
         navigationHelper = new NavigationHelper(wd);

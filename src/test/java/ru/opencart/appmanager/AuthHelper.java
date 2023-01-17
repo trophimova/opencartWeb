@@ -1,8 +1,10 @@
 package ru.opencart.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.opencart.model.AuthData;
 import ru.opencart.readProperties.ConfigProvider;
 
@@ -37,8 +39,15 @@ public class AuthHelper extends HelperBase {
         submit.click();
     }
 
+    public AuthHelper title() {
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//div[@id='content']//h2[1]")));
+        return this;
+    }
 
-
+    public String getNameTitle() {
+        String nameTitle = getNameTitle(myAccountTitle);
+        return nameTitle;
+    }
 
     @FindBy(xpath = ".//input[@id='input-email']")
     private WebElement inputEmail;
@@ -51,4 +60,5 @@ public class AuthHelper extends HelperBase {
 
     @FindBy(xpath = ".//div[@id='content']//h2[1]")
     private WebElement myAccountTitle;
+
 }

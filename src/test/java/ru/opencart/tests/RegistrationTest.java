@@ -2,6 +2,7 @@ package ru.opencart.tests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.*;
+import ru.opencart.appmanager.RegistrationHelper;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,12 +12,16 @@ public class RegistrationTest extends TestBase {
 
 
     @Test
-    public void testPositiveRegistration() {
-
+    public void testPositiveRegistration() throws InterruptedException {
+        app.goTo().gotoMainPage();
         app.goTo().gotoRegPage();
         int count = app.registration().count(By.className("form-control"));
-        app.registration().registration();
+        app.registration().setValidRegistration();
         assertThat(6, equalTo(count - 1));
+
+        app.registration().title();
+        String nameTitle = app.registration().getNameTitle();
+        assertThat(nameTitle, equalTo(RegistrationHelper.successRegMessage));
     }
 
 

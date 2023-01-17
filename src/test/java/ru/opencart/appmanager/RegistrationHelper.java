@@ -1,9 +1,11 @@
 package ru.opencart.appmanager;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.opencart.model.RegData;
 
 
@@ -14,20 +16,21 @@ public class RegistrationHelper extends HelperBase {
         super(wd);
     }
 
-    public void registration() {
+    public void setValidRegistration() {
         Faker data = new Faker();
+        String password  = data.internet().password();
         fillRegForm(new RegData()
                 .withUserFirstname(data.name().firstName())
                 .withUserLastname(data.name().lastName())
                 .withEmail(data.internet().emailAddress())
                 .withTelephone(data.phoneNumber().cellPhone())
-                .withPassword("123456")
-                .withConfirmPassword("123456"));
+                .withPassword(password)
+                .withConfirmPassword(password));
         confirmRegForm();
     }
 
     public void confirmRegForm() {
-        submit.click();
+        click(submit);
     }
 
     public void fillRegForm(RegData regData) {
@@ -37,9 +40,18 @@ public class RegistrationHelper extends HelperBase {
         type(inputTelephone, regData.getTelephone());
         type(inputPassword, regData.getPassword());
         type(inputConfirm, regData.getConfirmPassword());
-        checkbox.click();
+        click(checkbox);
     }
 
+    public RegistrationHelper title() {
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//div[@id='content']//h1")));
+        return this;
+    }
+
+    public String getNameTitle() {
+        String nameTitle = getNameTitle(title);
+        return nameTitle;
+    }
 
     @FindBy(xpath = ".//input[@id='input-firstname']")
     private WebElement inputFirstname;
@@ -66,9 +78,11 @@ public class RegistrationHelper extends HelperBase {
     private WebElement submit;
 
     @FindBy(xpath = ".//div[@id='content']//h1")
-    private WebElement title;
+    public WebElement title;
 
     @FindBy(className = "form-control")
     private WebElement formFields;
+
+    public static String successRegMessage = "Ваша учетная запись создана!";
 
 }

@@ -4,21 +4,29 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 
 public class HelperBase {
     protected WebDriver wd;
-    protected WebDriverWait wait;
+    private WebDriverWait wait;
 
     public HelperBase(WebDriver wd) {
         this.wd = wd;
-
+        wait = new WebDriverWait(wd, Duration.ofSeconds(3));
         PageFactory.initElements(wd, this);
+    }
+
+    protected WebDriverWait getWait(){
+        return this.wait;
     }
 
     protected void click(By locator) {
         wd.findElement(locator).click();
+    }
+
+    protected void click(WebElement webElement) {
+        webElement.click();
     }
 
 //    protected void type(By locator, String text) {
@@ -55,4 +63,8 @@ public class HelperBase {
     }
 
 
+    public String getNameTitle(WebElement webElement) {
+        String nameTitle = webElement.getText();
+        return nameTitle;
+    }
 }

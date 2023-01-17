@@ -22,7 +22,10 @@ public class NavigationHelper extends HelperBase {
                 && wd.findElement(By.tagName("h2")).getText().equals("Зарегистрированный клиент")) {
             return;
         }
-        wd.get("https://learn-qa.ru/index.php?route=account/login");
+        click(personalAccount);
+        click(authorization);
+
+
     }
 
     public void gotoRegPage() {
@@ -30,7 +33,13 @@ public class NavigationHelper extends HelperBase {
                 && wd.findElement(By.tagName("h1")).getText().equals("Регистрация")) {
             return;
         }
-        wd.get("https://learn-qa.ru/index.php?route=account/register");
+        click(personalAccount);
+        click(registration);
+    }
+
+    public void signOut() {
+        click(personalAccount);
+        click(signOut);
     }
 
     public void gotoProductPage() {
@@ -47,4 +56,12 @@ public class NavigationHelper extends HelperBase {
 
     @FindBy(xpath = ".//ul[@class='dropdown-menu dropdown-menu-right']//a")
     private WebElement registration;
+
+    @FindBy(xpath = ".//ul[@class='dropdown-menu dropdown-menu-right']/li[2]//a")
+    private WebElement authorization;
+
+    @FindBy(xpath = ".//ul[@class='dropdown-menu dropdown-menu-right']/li[5]//a")
+    private WebElement signOut;
+
+
 }
