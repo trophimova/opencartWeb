@@ -4,6 +4,9 @@ import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import ru.opencart.appmanager.AuthHelper;
+import ru.opencart.model.AuthData;
+import ru.opencart.readProperties.ConfigProvider;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,10 +30,12 @@ public class AuthorizationTest extends TestBase {
         app.goTo().gotoLoginPage();
         int count = app.authorization().count(By.className("form-control"));
         assertThat(2, equalTo(count - 1));
-        app.authorization().login();
+        app.authorization().login(new AuthData()
+                .withEmail(ConfigProvider.USER_EMAIL)
+                .withPassword(ConfigProvider.USER_PASSWORD));
         app.authorization().title();
         String nameTitle = app.authorization().getNameTitle();
-        assertThat(nameTitle, equalTo("Моя учетная запись"));
+        assertThat(nameTitle, equalTo(AuthHelper.successAuthTitle));
 
     }
 

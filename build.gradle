@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.aspectj:aspectjweaver:1.9.6'
     implementation 'com.typesafe:config:1.4.2'
     implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'com.beust:jcommander:1.81'
 }
 
 

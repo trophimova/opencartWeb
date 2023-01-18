@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.opencart.model.AuthData;
-import ru.opencart.readProperties.ConfigProvider;
 
 
 public class AuthHelper extends HelperBase {
@@ -15,10 +14,8 @@ public class AuthHelper extends HelperBase {
         super(wd);
     }
 
-    public void login() {
-        fillAuthForm(new AuthData()
-                .withEmail(ConfigProvider.USER_EMAIL)
-                .withPassword(ConfigProvider.USER_PASSWORD));
+    public void login(AuthData authData) {
+        fillAuthForm(authData);
         confirmAuthForm();
     }
 
@@ -60,5 +57,7 @@ public class AuthHelper extends HelperBase {
 
     @FindBy(xpath = ".//div[@id='content']//h2[1]")
     private WebElement myAccountTitle;
+
+    public static String successAuthTitle = "Моя учетная запись";
 
 }

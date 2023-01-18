@@ -16,16 +16,8 @@ public class RegistrationHelper extends HelperBase {
         super(wd);
     }
 
-    public void setValidRegistration() {
-        Faker data = new Faker();
-        String password  = data.internet().password();
-        fillRegForm(new RegData()
-                .withUserFirstname(data.name().firstName())
-                .withUserLastname(data.name().lastName())
-                .withEmail(data.internet().emailAddress())
-                .withTelephone(data.phoneNumber().cellPhone())
-                .withPassword(password)
-                .withConfirmPassword(password));
+    public void setValidRegistration(RegData regData) {
+        fillRegForm(regData);
         confirmRegForm();
     }
 

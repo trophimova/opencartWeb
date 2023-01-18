@@ -66,4 +66,15 @@ public class RegData {
         return confirmPassword;
     }
 
+    @Override
+    public String toString() {
+        return "RegData{" +
+                "userFirstname='" + userFirstname + '\'' +
+                ", userLastname='" + userLastname + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                '}';
+    }
 }
