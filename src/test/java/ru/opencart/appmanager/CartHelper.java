@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.opencart.model.ProductData;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 public class CartHelper extends HelperBase {
@@ -50,23 +48,8 @@ public class CartHelper extends HelperBase {
     }
 
 
-
-
     public List<ProductData> list() {
         List<ProductData> products = new ArrayList<ProductData>();
-        List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
-        for (WebElement element : elements) {
-            String name = getNameTitle(element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")));
-            ProductData product = new ProductData()
-                    .withProductName(name)
-                    .withProductGroup(null);
-            products.add(product);
-        }
-        return products;
-    }
-
-    public Set<ProductData> all() {
-        Set<ProductData> products = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
         for (WebElement element : elements) {
             String name = getNameTitle(element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")));

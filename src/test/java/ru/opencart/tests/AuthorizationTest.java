@@ -2,6 +2,7 @@ package ru.opencart.tests;
 
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -9,6 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class AuthorizationTest extends TestBase {
+
+    @AfterMethod
+    public void signOut() {
+        app.goTo().signOut();
+    }
 
 
     @Test
@@ -25,7 +31,7 @@ public class AuthorizationTest extends TestBase {
         app.authorization().title();
         String nameTitle = app.authorization().getNameTitle();
         assertThat(nameTitle, equalTo("Моя учетная запись"));
-        app.goTo().signOut();
+
     }
 
 
