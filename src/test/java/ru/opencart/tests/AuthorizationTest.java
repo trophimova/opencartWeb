@@ -25,6 +25,7 @@ public class AuthorizationTest extends TestBase {
     @Description("Тест проверяет, что после ввода пользователем валидных данных и подтверждения авторизации, пользователь  переходит на страницу своей учетной записи")
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
+    @Step("Проверка успешной авторизации")
     public void testPositiveAuthorization() {
         app.goTo().gotoMainPage();
         app.goTo().gotoLoginPage();

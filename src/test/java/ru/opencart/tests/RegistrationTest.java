@@ -72,6 +72,7 @@ public class RegistrationTest extends TestBase {
     @Description("Тест проверяет, что после ввода пользователем валидных данных и подтверждения регистрации, пользователь видит сообщение об успешной регистрации")
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
+    @Step("Проверка успешной регистрации")
     public void testPositiveRegistration(RegData reg) throws InterruptedException {
 
         app.goTo().gotoMainPage();

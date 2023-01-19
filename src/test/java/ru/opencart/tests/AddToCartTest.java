@@ -17,6 +17,7 @@ public class AddToCartTest extends TestBase {
     @Description("Тест проверяет, что при добавлении 2х товаров в корзину, количество товара в корзине увеличивается на 2")
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
+    @Step("Проверка успешной операции добавления в корзину")
     public void testPositiveAddToCart() throws InterruptedException {
         app.goTo().gotoMainPage();
         app.goTo().gotoCart();
