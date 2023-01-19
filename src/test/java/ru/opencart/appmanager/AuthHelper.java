@@ -20,7 +20,6 @@ public class AuthHelper extends HelperBase {
     }
 
 
-
     public void fillAuthForm(AuthData authData) {
         type(inputEmail, authData.getEmail());
         type(inputPassword, authData.getPassword());

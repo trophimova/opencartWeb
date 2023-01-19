@@ -5,7 +5,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.opencart.appmanager.ApplicationManager;
-import ru.opencart.readProperties.ConfigProvider;
 
 
 public class TestBase {

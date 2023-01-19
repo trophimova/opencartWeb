@@ -1,16 +1,19 @@
 package ru.opencart.tests;
 
-import com.github.javafaker.Faker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.thoughtworks.xstream.XStream;
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import ru.opencart.appmanager.RegistrationHelper;
 import ru.opencart.model.RegData;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -38,7 +41,6 @@ public class RegistrationTest extends TestBase {
             return regs.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
         }
     }
-
 
 
     @DataProvider

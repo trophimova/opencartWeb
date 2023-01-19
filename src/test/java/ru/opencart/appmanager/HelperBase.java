@@ -17,7 +17,7 @@ public class HelperBase {
         PageFactory.initElements(wd, this);
     }
 
-    protected WebDriverWait getWait(){
+    protected WebDriverWait getWait() {
         return this.wait;
     }
 
@@ -29,10 +29,6 @@ public class HelperBase {
         webElement.click();
     }
 
-//    protected void type(By locator, String text) {
-//        wd.findElement(locator).click();
-//        wd.findElement(locator).sendKeys(text);
-//    }
 
     protected void type(WebElement webElement, String authData) {
         webElement.click();
