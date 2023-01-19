@@ -13,10 +13,14 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.BrowserType;
 import ru.opencart.readProperties.ConfigProvider;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-
     public static WebDriver wd;
 
 
@@ -31,8 +35,7 @@ public class ApplicationManager {
         this.browser = browser;
     }
 
-    public void init() {
-
+    public void init() throws IOException {
         if (browser.equals(BrowserType.FIREFOX)) {
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();

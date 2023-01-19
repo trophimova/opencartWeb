@@ -1,5 +1,6 @@
 package ru.opencart.tests;
 
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -28,6 +29,10 @@ public class DeleteFromCartTest extends TestBase{
     }
 
     @Test
+    @Owner("Анна Трофимова")
+    @Description("Тест проверяет, что при удалении 1 товара из корзины, количество товара в корзине уменьшается на 1")
+    @Link("https://github.com/trophimova/opencartWeb")
+    @Severity(SeverityLevel.CRITICAL)
     public void testPositiveDeleteFromCart() throws InterruptedException {
 
         List<ProductData> before = app.cart().list();

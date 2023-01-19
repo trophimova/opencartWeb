@@ -1,7 +1,9 @@
 package ru.opencart.model;
 
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+@XStreamAlias("regdata")
 public class RegData {
     private String userFirstname;
     private String userLastname;

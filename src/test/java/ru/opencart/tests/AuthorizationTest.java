@@ -22,9 +22,9 @@ public class AuthorizationTest extends TestBase {
 
     @Test
     @Owner("Анна Трофимова")
-    @Description("Тест проверяет наличие двух полей для ввода данных")
+    @Description("Тест проверяет, что после ввода пользователем валидных данных и подтверждения авторизации, пользователь  переходит на страницу своей учетной записи")
     @Link("https://github.com/trophimova/opencartWeb")
-    @Severity(SeverityLevel.BLOCKER)
+    @Severity(SeverityLevel.CRITICAL)
     public void testPositiveAuthorization() {
         app.goTo().gotoMainPage();
         app.goTo().gotoLoginPage();

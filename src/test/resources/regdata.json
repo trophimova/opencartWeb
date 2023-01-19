@@ -1,0 +1,26 @@
+[
+  {
+    "userFirstname": "Jamie",
+    "userLastname": "Lockman",
+    "email": "geralyn.hoppe@yahoo.com",
+    "telephone": "1-520-877-6234",
+    "password": "2mukrljeon6",
+    "confirmPassword": "2mukrljeon6"
+  },
+  {
+    "userFirstname": "Nicholas",
+    "userLastname": "Johnson",
+    "email": "geraldo.deckow@hotmail.com",
+    "telephone": "602.619.9278",
+    "password": "2mukrljeon6",
+    "confirmPassword": "2mukrljeon6"
+  },
+  {
+    "userFirstname": "Mariann",
+    "userLastname": "Abbott",
+    "email": "lorine.spinka@yahoo.com",
+    "telephone": "(197) 271-2769",
+    "password": "2mukrljeon6",
+    "confirmPassword": "2mukrljeon6"
+  }
+]
