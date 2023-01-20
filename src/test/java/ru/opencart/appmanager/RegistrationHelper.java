@@ -39,8 +39,7 @@ public class RegistrationHelper extends HelperBase {
     }
 
     public String getNameTitle() {
-        String nameTitle = getNameTitle(title);
-        return nameTitle;
+        return getNameTitle(title);
     }
 
     @FindBy(xpath = ".//input[@id='input-firstname']")

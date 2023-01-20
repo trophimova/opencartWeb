@@ -13,11 +13,11 @@ public class NavigationHelper extends HelperBase {
         super(wd);
     }
 
-    public void gotoMainPage() {
+    public void goToMainPage() {
         wd.get(ConfigProvider.MAINPAGE);
     }
 
-    public void gotoLoginPage() {
+    public void goToLoginPage() {
         if (isElementPresent(By.tagName("h2"))
                 && wd.findElement(By.tagName("h2")).getText().equals("Зарегистрированный клиент")) {
             return;
@@ -28,7 +28,7 @@ public class NavigationHelper extends HelperBase {
 
     }
 
-    public void gotoRegPage() {
+    public void goToRegPage() {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Регистрация")) {
             return;
@@ -42,11 +42,8 @@ public class NavigationHelper extends HelperBase {
         click(signOut);
     }
 
-    public void gotoProductPage() {
-        wd.get("https://learn-qa.ru/index.php?route=product/category&path=33");
-    }
 
-    public void gotoCart() {
+    public void goToCart() {
         wd.get("https://learn-qa.ru/index.php?route=checkout/cart");
     }
 

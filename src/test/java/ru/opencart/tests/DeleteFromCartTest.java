@@ -16,7 +16,7 @@ public class DeleteFromCartTest extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.goTo().gotoCart();
+        app.goTo().goToCart();
         if (app.cart().list().size() == 0) {
             app.cart().add(new ProductData()
                     .withProductName(".product-layout:nth-child(1) .caption a")
@@ -24,7 +24,7 @@ public class DeleteFromCartTest extends TestBase{
             app.cart().add(new ProductData()
                     .withProductName(".product-layout:nth-child(2) .caption a")
                     .withProductGroup("li:nth-child(7) > a"));
-            app.goTo().gotoCart();
+            app.goTo().goToCart();
         }
     }
 

@@ -17,10 +17,6 @@ public class TestBase {
         app.init();
     }
 
-    @BeforeMethod
-    public void gotoMainPage() {
-        app.goTo().gotoMainPage();
-    }
 
     @AfterSuite
     public void tearDown() {

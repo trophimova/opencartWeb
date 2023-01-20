@@ -27,8 +27,8 @@ public class AuthorizationTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной авторизации")
     public void testPositiveAuthorization() {
-        app.goTo().gotoMainPage();
-        app.goTo().gotoLoginPage();
+        app.goTo().goToMainPage();
+        app.goTo().goToLoginPage();
         int count = app.authorization().count(By.className("form-control"));
         assertThat(2, equalTo(count - 1));
         app.authorization().login(new AuthData()

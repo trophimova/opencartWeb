@@ -77,8 +77,8 @@ public class RegistrationTest extends TestBase {
     @Step("Проверка успешной регистрации")
     public void testPositiveRegistration(RegData reg) throws InterruptedException {
 
-        app.goTo().gotoMainPage();
-        app.goTo().gotoRegPage();
+        app.goTo().goToMainPage();
+        app.goTo().goToRegPage();
         int count = app.registration().count(By.className("form-control"));
         app.registration().setValidRegistration(reg);
         assertThat(6, equalTo(count - 1));
