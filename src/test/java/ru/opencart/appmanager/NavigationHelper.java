@@ -44,7 +44,8 @@ public class NavigationHelper extends HelperBase {
 
 
     public void goToCart() {
-        wd.get("https://learn-qa.ru/index.php?route=checkout/cart");
+        goToMainPage();
+        click(cart);
     }
 
 
@@ -59,6 +60,9 @@ public class NavigationHelper extends HelperBase {
 
     @FindBy(xpath = ".//ul[@class='dropdown-menu dropdown-menu-right']/li[5]//a")
     private WebElement signOut;
+
+    @FindBy(xpath = ".//ul[@class= 'list-inline']/li[4]/a")
+    private WebElement cart;
 
 
 }
