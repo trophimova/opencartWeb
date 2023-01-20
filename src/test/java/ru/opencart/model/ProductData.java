@@ -1,17 +1,19 @@
 package ru.opencart.model;
 
+import org.openqa.selenium.WebElement;
+
 import java.util.Objects;
 
 public class ProductData {
     private String productName;
-    private String productGroup;
+    private WebElement productGroup;
 
 
     public String getProductName() {
         return productName;
     }
 
-    public String getProductGroup() {
+    public WebElement getProductGroup() {
         return productGroup;
     }
 
@@ -20,7 +22,7 @@ public class ProductData {
         return this;
     }
 
-    public ProductData withProductGroup(String productGroup) {
+    public ProductData withProductGroup(WebElement productGroup) {
         this.productGroup = productGroup;
         return this;
     }

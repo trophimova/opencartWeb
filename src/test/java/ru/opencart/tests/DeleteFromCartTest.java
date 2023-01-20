@@ -4,6 +4,7 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.opencart.appmanager.CartHelper;
 import ru.opencart.model.ProductData;
 
 import java.util.List;
@@ -20,10 +21,10 @@ public class DeleteFromCartTest extends TestBase{
         if (app.cart().list().size() == 0) {
             app.cart().add(new ProductData()
                     .withProductName(".product-layout:nth-child(1) .caption a")
-                    .withProductGroup("li:nth-child(7) > a"));
+                    .withProductGroup(CartHelper.cameras));
             app.cart().add(new ProductData()
                     .withProductName(".product-layout:nth-child(2) .caption a")
-                    .withProductGroup("li:nth-child(7) > a"));
+                    .withProductGroup(CartHelper.cameras));
             app.goTo().goToCart();
         }
     }

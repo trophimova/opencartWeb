@@ -2,6 +2,7 @@ package ru.opencart.tests;
 
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
+import ru.opencart.appmanager.CartHelper;
 import ru.opencart.model.ProductData;
 
 import java.util.List;
@@ -25,11 +26,11 @@ public class AddToCartTest extends TestBase {
         List<ProductData> before = app.cart().list();
         app.cart().add(new ProductData()
                 .withProductName(".product-layout:nth-child(1) .caption a")
-                .withProductGroup("li:nth-child(7) > a"));
+                .withProductGroup(CartHelper.cameras));
         Thread.sleep(1000l);
         app.cart().add(new ProductData()
                 .withProductName(".product-layout:nth-child(2) .caption a")
-                .withProductGroup("li:nth-child(7) > a"));
+                .withProductGroup(CartHelper.cameras));
         app.goTo().goToCart();
         List<ProductData> after = app.cart().list();
         assertThat(before.size() + 2, equalTo(after.size()));

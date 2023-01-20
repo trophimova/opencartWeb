@@ -3,6 +3,7 @@ package ru.opencart.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import ru.opencart.model.ProductData;
 
 import java.util.ArrayList;
@@ -20,8 +21,12 @@ public class CartHelper extends HelperBase {
         addProduct(productData.getProductName());
     }
 
-    private void chooseProductGroup(String cssSelector) {
-        click(By.cssSelector(cssSelector));
+//    private void chooseProductGroup(String cssSelector) {
+//        click(By.cssSelector(cssSelector));
+//    }
+
+    private void chooseProductGroup(WebElement webElement) {
+        click(webElement);
     }
 
     private void addProduct(String cssSelector) {
@@ -60,6 +65,10 @@ public class CartHelper extends HelperBase {
         }
         return products;
     }
+
+
+    @FindBy(css = "li:nth-child(7) > a")
+    public static WebElement cameras;
 
 
 }
