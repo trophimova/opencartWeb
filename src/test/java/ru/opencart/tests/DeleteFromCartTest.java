@@ -37,11 +37,12 @@ public class DeleteFromCartTest extends TestBase{
     public void testPositiveDeleteFromCart() throws InterruptedException {
 
         List<ProductData> before = app.cart().list();
-        int index = before.size() - 1;
+        int index = 1;
         app.cart().delete(index);
         Thread.sleep(1000l);
         List<ProductData> after = app.cart().list();
-        Assert.assertEquals(after.size(), index);
+        assertThat(after.size(), equalTo(index));
+        //Assert.assertEquals(after.size(), index);
 
         before.remove(index);
         assertThat(after, equalTo(before));

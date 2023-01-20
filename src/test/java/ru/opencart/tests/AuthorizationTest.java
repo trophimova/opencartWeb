@@ -29,8 +29,8 @@ public class AuthorizationTest extends TestBase {
     public void testPositiveAuthorization() {
         app.goTo().goToMainPage();
         app.goTo().goToLoginPage();
-        int count = app.authorization().count(By.className("form-control"));
-        assertThat(2, equalTo(count - 1));
+        int count = app.authorization().count(By.className("form-group"));
+        assertThat(2, equalTo(count));
         app.authorization().login(new AuthData()
                 .withEmail(ConfigProvider.USER_EMAIL)
                 .withPassword(ConfigProvider.USER_PASSWORD));
