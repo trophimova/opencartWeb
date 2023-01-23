@@ -54,6 +54,8 @@ public class HelperBase {
 
     }
 
+
+
     public int count(By locator) {
         return wd.findElements(locator).size();
     }

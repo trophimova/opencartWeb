@@ -22,13 +22,12 @@ public class AddToCartTest extends TestBase {
     public void testPositiveAddToCart() throws InterruptedException {
 
         app.goTo().goToCart();
-        Thread.sleep(1000l);
         List<ProductData> before = app.cart().list();
         app.cart().add(new ProductData()
-                .withProductName(".product-layout:nth-child(1) .caption a")
+                .withProductName(CartHelper.camera1)
                 .withProductGroup(CartHelper.cameras));
         app.cart().add(new ProductData()
-                .withProductName(".product-layout:nth-child(2) .caption a")
+                .withProductName(CartHelper.camera2)
                 .withProductGroup(CartHelper.cameras));
         app.goTo().goToCart();
         List<ProductData> after = app.cart().list();

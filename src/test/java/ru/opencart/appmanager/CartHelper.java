@@ -26,8 +26,9 @@ public class CartHelper extends HelperBase {
         click(webElement);
     }
 
-    private void addProduct(String cssSelector) {
-        click(By.cssSelector(cssSelector));
+
+    private void addProduct(WebElement webElement) {
+        click(webElement);
         if (isElementPresent(By.id("input-option226"))) {
             click(By.id("input-option226"));
             WebElement dropdown = wd.findElement(By.id("input-option226"));
@@ -41,18 +42,14 @@ public class CartHelper extends HelperBase {
         wd.findElements(By.xpath("//button[@class = 'btn btn-danger']")).get(index).click();
     }
 
-    public boolean isThereAProduct() {
-        return isElementPresent(By.xpath("//input[@size = '1']"));
-    }
 
 
     public List<ProductData> list() {
         List<ProductData> products = new ArrayList<ProductData>();
         List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
         for (WebElement element : elements) {
-            String name = getNameTitle(element.findElement(By.xpath("//div[@class = 'table-responsive']//tbody//tr//td[@class = 'text-left']/a")));
             ProductData product = new ProductData()
-                    .withProductName(name)
+                    .withProductName(null)
                     .withProductGroup(null);
             products.add(product);
         }
@@ -63,5 +60,16 @@ public class CartHelper extends HelperBase {
     @FindBy(css = "li:nth-child(7) > a")
     public static WebElement cameras;
 
+    @FindBy(id = "button-cart")
+    private WebElement cartButton;
+
+    @FindBy(css = ".product-layout:nth-child(1) .caption a")
+    public static WebElement camera1;
+
+    @FindBy(css = ".product-layout:nth-child(2) .caption a")
+    public static WebElement camera2;
+
+    @FindBy(id = "input-option226")
+    private WebElement select;
 
 }

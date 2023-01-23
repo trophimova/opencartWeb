@@ -20,10 +20,10 @@ public class DeleteFromCartTest extends TestBase{
         app.goTo().goToCart();
         if (app.cart().list().size() == 0) {
             app.cart().add(new ProductData()
-                    .withProductName(".product-layout:nth-child(1) .caption a")
+                    .withProductName(CartHelper.camera1)
                     .withProductGroup(CartHelper.cameras));
             app.cart().add(new ProductData()
-                    .withProductName(".product-layout:nth-child(2) .caption a")
+                    .withProductName(CartHelper.camera2)
                     .withProductGroup(CartHelper.cameras));
             app.goTo().goToCart();
         }
@@ -38,9 +38,9 @@ public class DeleteFromCartTest extends TestBase{
     public void testPositiveDeleteFromCart() throws InterruptedException {
 
         List<ProductData> before = app.cart().list();
-        int index = 1;
+        int index = before.size() - 1;
         app.cart().delete(index);
-        Thread.sleep(1000l);
+        //Thread.sleep(1000l);
         List<ProductData> after = app.cart().list();
         assertThat(after.size(), equalTo(index));
         before.remove(index);

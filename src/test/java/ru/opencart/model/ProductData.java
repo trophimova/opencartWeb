@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import java.util.Objects;
 
 public class ProductData {
-    private String productName;
+    private WebElement productName;
     private WebElement productGroup;
 
 
-    public String getProductName() {
+    public WebElement getProductName() {
         return productName;
     }
 
@@ -17,7 +17,7 @@ public class ProductData {
         return productGroup;
     }
 
-    public ProductData withProductName(String productName) {
+    public ProductData withProductName(WebElement productName) {
         this.productName = productName;
         return this;
     }
