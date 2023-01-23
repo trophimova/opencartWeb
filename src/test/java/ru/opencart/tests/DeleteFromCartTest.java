@@ -40,10 +40,11 @@ public class DeleteFromCartTest extends TestBase{
         List<ProductData> before = app.cart().list();
         int index = before.size() - 1;
         app.cart().delete(index);
-        //Thread.sleep(1000l);
+        Thread.sleep(1000l); // тут нужно ожидание иначе падает
         List<ProductData> after = app.cart().list();
         assertThat(after.size(), equalTo(index));
         before.remove(index);
+
         assertThat(after, equalTo(before));
 
 
