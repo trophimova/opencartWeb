@@ -43,8 +43,6 @@ public class DeleteFromCartTest extends TestBase{
         Thread.sleep(1000l);
         List<ProductData> after = app.cart().list();
         assertThat(after.size(), equalTo(index));
-        //Assert.assertEquals(after.size(), index);
-
         before.remove(index);
         assertThat(after, equalTo(before));
 

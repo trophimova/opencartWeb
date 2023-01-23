@@ -21,9 +21,6 @@ public class CartHelper extends HelperBase {
         addProduct(productData.getProductName());
     }
 
-//    private void chooseProductGroup(String cssSelector) {
-//        click(By.cssSelector(cssSelector));
-//    }
 
     private void chooseProductGroup(WebElement webElement) {
         click(webElement);
@@ -39,10 +36,6 @@ public class CartHelper extends HelperBase {
         click(By.id("button-cart"));
     }
 
-    public void openCart() {
-        wd.findElement(By.id("cart")).click();
-        wd.findElement(By.xpath("//ul[@class = 'dropdown-menu pull-right']//strong")).click();
-    }
 
     public void delete(int index) {
         wd.findElements(By.xpath("//button[@class = 'btn btn-danger']")).get(index).click();
