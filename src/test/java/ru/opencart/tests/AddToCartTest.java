@@ -27,7 +27,6 @@ public class AddToCartTest extends TestBase {
         app.cart().add(new ProductData()
                 .withProductName(".product-layout:nth-child(1) .caption a")
                 .withProductGroup(CartHelper.cameras));
-        Thread.sleep(1000l);
         app.cart().add(new ProductData()
                 .withProductName(".product-layout:nth-child(2) .caption a")
                 .withProductGroup(CartHelper.cameras));
