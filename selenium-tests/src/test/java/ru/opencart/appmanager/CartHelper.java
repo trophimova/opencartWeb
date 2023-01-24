@@ -6,8 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ru.opencart.model.ProductData;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class CartHelper extends HelperBase {
@@ -55,6 +57,7 @@ public class CartHelper extends HelperBase {
         }
         return products;
     }
+
 
 
     @FindBy(css = "li:nth-child(7) > a")

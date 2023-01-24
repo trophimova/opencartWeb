@@ -1,7 +1,6 @@
 package ru.opencart.tests;
 
 import io.qameta.allure.*;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.opencart.appmanager.CartHelper;

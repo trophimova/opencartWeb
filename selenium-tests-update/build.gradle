@@ -25,8 +25,13 @@ dependencies {
     implementation 'com.typesafe:config:1.4.2'
     implementation 'com.github.javafaker:javafaker:1.0.2'
     implementation 'com.beust:jcommander:1.81'
-    implementation 'com.thoughtworks.xstream:xstream:1.4.18'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.18' // убрать
     implementation 'com.google.code.gson:gson:2.9.0'
+    testImplementation 'org.awaitility:awaitility:4.2.0' //убрать
+    implementation 'org.aeonbits.owner:owner:1.0.12'
+
+
+    implementation 'org.jtwig:jtwig-core:5.87.0.RELEASE'
 
 }
 
