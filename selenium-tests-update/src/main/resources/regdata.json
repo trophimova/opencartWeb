@@ -1,0 +1,18 @@
+[
+  {
+    "userFirstname": "Wesley",
+    "userLastname": "Lockman",
+    "email": "jae.jacobs@hotmail.com",
+    "telephone": "1-953-621-8105",
+    "password": "iz41bt8wtym0",
+    "confirmPassword": "iz41bt8wtym0"
+  },
+  {
+    "userFirstname": "Mitchel",
+    "userLastname": "Morissette",
+    "email": "jeffery.larson@yahoo.com",
+    "telephone": "400.720.8359",
+    "password": "iz41bt8wtym0",
+    "confirmPassword": "iz41bt8wtym0"
+  }
+]

@@ -3,7 +3,7 @@
 
     <test name="Authorization">
         <classes>
-            <class name="ru.opencart.tests.AuthorizationTest"/>
+            <class name="ru.opencart.tests.TestLogin"/>
         </classes>
     </test>
 

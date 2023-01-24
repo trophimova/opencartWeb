@@ -45,9 +45,9 @@ task testRegistration(type: Test) {
     }
 }
 
-task testAuthorization(type: Test) {
+task testLogin(type: Test) {
     useTestNG {
-        suites 'src/test/resources/testng-authorization.xml'
+        suites 'src/test/resources/testng-login.xml'
     }
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"

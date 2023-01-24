@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class AuthorizationTest extends TestBase {
+public class TestLogin extends TestBase {
 
     @AfterMethod
     public void signOut() {
@@ -26,7 +26,7 @@ public class AuthorizationTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной авторизации")
-    public void testPositiveAuthorization() {
+    public void userCanLoginWithValidCredentials() {
         app.goTo().goToMainPage();
         app.goTo().goToLoginPage();
         int count = app.authorization().count(By.className("form-group"));

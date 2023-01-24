@@ -47,7 +47,7 @@ public class RegistrationTest extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validRegistrationFromJson() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/regdata.json")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/main/resources/regdata.json")))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
