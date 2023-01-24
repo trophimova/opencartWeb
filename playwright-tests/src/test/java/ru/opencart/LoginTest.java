@@ -1,5 +1,6 @@
 package ru.opencart;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
@@ -10,6 +11,7 @@ public class LoginTest extends BaseTest{
         page.fill("[id=input-email]", "tegg88st@mail.ru");
         page.fill("[id=input-password]", "123456");
         page.click("[type=submit]");
+        Assert.assertTrue(page.locator("xpath=.//div[@id='content']//h2[1]").textContent().contains("Моя учетная запись"));
     }
 
 
