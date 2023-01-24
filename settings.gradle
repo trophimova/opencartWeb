@@ -1,4 +1,4 @@
 rootProject.name = 'opencartWeb'
 include 'selenium-tests'
-include 'selenium-tests-update'
+
 
