@@ -14,45 +14,13 @@ repositories {
 
 dependencies {
     implementation 'org.testng:testng:7.5'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.4.0'
-    implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.4.0'
-    implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
-    implementation 'io.qameta.allure:allure-testng:2.17.3'
-    implementation 'io.qameta.allure:allure-commandline:2.17.3'
-    implementation 'io.qameta.allure:allure-java-commons:2.17.3'
-    implementation 'org.aspectj:aspectjweaver:1.9.6'
-    implementation 'com.typesafe:config:1.4.2'
-    implementation 'com.github.javafaker:javafaker:1.0.2'
-    implementation 'com.beust:jcommander:1.81'
-    implementation 'com.thoughtworks.xstream:xstream:1.4.18' // убрать
-    implementation 'com.google.code.gson:gson:2.9.0'
-    testImplementation 'org.awaitility:awaitility:4.2.0' //убрать
-    implementation 'org.aeonbits.owner:owner:1.0.12'
-
-
-    implementation 'org.jtwig:jtwig-core:5.87.0.RELEASE'
+    implementation 'com.codeborne:selenide:4.14.2'
 
 }
-
-
-task testRegistration(type: Test) {
-    useTestNG {
-        suites 'src/test/resources/testng-registration.xml'
-    }
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
+test {
+    useTestNG()
 }
 
-task testLogin(type: Test) {
-    useTestNG {
-        suites 'src/test/resources/testng-login.xml'
-    }
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-}
 
 
 compileTestJava.options.encoding = 'UTF-8'

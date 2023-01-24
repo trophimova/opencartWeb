@@ -1,0 +1,18 @@
+[
+  {
+    "userFirstname": "Pierre",
+    "userLastname": "Rowe",
+    "email": "andre.abernathy@hotmail.com",
+    "telephone": "(690) 746-9799",
+    "password": "ro70ewz1oke",
+    "confirmPassword": "ro70ewz1oke"
+  },
+  {
+    "userFirstname": "Tandy",
+    "userLastname": "Mante",
+    "email": "pedro.schumm@hotmail.com",
+    "telephone": "(326) 368-4017",
+    "password": "ro70ewz1oke",
+    "confirmPassword": "ro70ewz1oke"
+  }
+]

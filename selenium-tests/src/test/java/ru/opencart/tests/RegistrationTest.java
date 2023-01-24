@@ -27,7 +27,7 @@ public class RegistrationTest extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validRegistrationFromJson() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/regdata.json")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/main/resources/regdata.json")))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
@@ -46,7 +46,7 @@ public class RegistrationTest extends TestBase {
     @DataProvider
     public Iterator<Object[]> validRegistrationFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/regdata.csv")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/main/resources/regdata.csv")))) {
             String line = reader.readLine();
             while (line != null) {
                 String[] split = line.split(";");
