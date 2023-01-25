@@ -4,15 +4,15 @@ plugins {
 }
 
 group 'ru.opencart'
-version 'unspecified'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    //implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'com.microsoft.playwright:playwright:1.29.0'
     implementation 'org.testng:testng:7.5'
     implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
@@ -26,6 +26,6 @@ test {
 
 compileTestJava.options.encoding = 'UTF-8'
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }

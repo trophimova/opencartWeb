@@ -40,4 +40,16 @@ public class RegData {
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
+
+    @Override
+    public String toString() {
+        return "RegData{" +
+                "userFirstName='" + userFirstName + '\'' +
+                ", userLastName='" + userLastName + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                '}';
+    }
 }

@@ -12,10 +12,11 @@ public interface ConfigProvider {
                 : ConfigFactory.load("application.conf");
     }
 
-    String MAINPAGE = readConfig().getString("mainPage");
-    String USER_EMAIL = readConfig().getString("userParams.email");
-    String USER_PASSWORD = readConfig().getString("userParams.password");
+    String MAINPAGE = config.getString("mainPage");
+    String USER_EMAIL = config.getString("userParams.email");
+    String USER_PASSWORD = config.getString("userParams.password");
 
+    int REG_DATA_COUNT = config.getInt("regDataCount");
 
 
 }
