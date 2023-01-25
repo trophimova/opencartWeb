@@ -7,7 +7,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginWithValidCredentials() {
-        //AuthHelper authHelper = new AuthHelper(page);
         goTo().goToMainPage();
         goTo().goToLoginPage();
         authorization().login();
