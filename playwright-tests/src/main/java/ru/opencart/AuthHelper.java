@@ -30,11 +30,15 @@ public class AuthHelper extends HelperBase {
     }
 
     public String getTitleName() {
-        return page.locator("xpath=.//div[@id='content']//h2[1]").textContent();
+        return page.locator(myAccountTitle).textContent();
     }
 
     public static String successLoginTitle = "Моя учетная запись";
     private String inputEmail = "[id=input-email]";
     private String inputPassword = "[id=input-password]";
     private String submit = "[type=submit]";
+    private String myAccountTitle = "xpath=.//div[@id='content']//h2[1]";
+
+
+
 }

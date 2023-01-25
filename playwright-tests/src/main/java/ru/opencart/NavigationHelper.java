@@ -2,6 +2,7 @@ package ru.opencart;
 
 
 import com.microsoft.playwright.Page;
+import ru.opencart.readProperties.ConfigProvider;
 
 public class NavigationHelper extends HelperBase {
 
@@ -12,11 +13,18 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToMainPage() {
-        page.navigate("https://learn-qa.ru/");
+        page.navigate(ConfigProvider.MAINPAGE);
     }
     public void goToLoginPage() {
-        page.click("xpath=.//a[@title='Личный кабинет']");
+        page.click(personalAccount);
         page.click("xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[2]//a");
     }
 
+    public void signOut() {
+        page.click(personalAccount);
+        page.click(signOut);
+    }
+
+    private final String personalAccount = "xpath=.//a[@title='Личный кабинет']";
+    private final String signOut = "xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[5]//a";
 }
