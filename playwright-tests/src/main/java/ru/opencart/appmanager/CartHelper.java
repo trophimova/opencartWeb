@@ -1,14 +1,13 @@
-package ru.opencart;
+package ru.opencart.appmanager;
 
 
 import com.microsoft.playwright.Page;
 
 public class CartHelper extends HelperBase {
 
-    private final Page page;
 
     public CartHelper(Page page) {
-        this.page = page;
+        super(page);
     }
 
 }

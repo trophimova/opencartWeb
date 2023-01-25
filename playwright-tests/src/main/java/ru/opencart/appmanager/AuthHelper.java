@@ -1,4 +1,4 @@
-package ru.opencart;
+package ru.opencart.appmanager;
 
 
 import com.microsoft.playwright.Page;
@@ -6,10 +6,9 @@ import ru.opencart.model.AuthData;
 
 public class AuthHelper extends HelperBase {
 
-    private Page page;
 
     public AuthHelper(Page page) {
-        this.page = page;
+        super(page);
     }
 
 
@@ -19,7 +18,6 @@ public class AuthHelper extends HelperBase {
     }
 
     private void confirmLogin() {
-
         page.click(submit);
     }
 
@@ -34,10 +32,10 @@ public class AuthHelper extends HelperBase {
     }
 
     public static String successLoginTitle = "Моя учетная запись";
-    private String inputEmail = "[id=input-email]";
-    private String inputPassword = "[id=input-password]";
-    private String submit = "[type=submit]";
-    private String myAccountTitle = "xpath=.//div[@id='content']//h2[1]";
+    private final String inputEmail = "[id=input-email]";
+    private final String inputPassword = "[id=input-password]";
+    private final String submit = "[type=submit]";
+    private final String myAccountTitle = "xpath=.//div[@id='content']//h2[1]";
 
 
 

@@ -1,8 +1,12 @@
-package ru.opencart;
+package ru.opencart.appmanager;
 
 import com.microsoft.playwright.*;
 import io.qameta.allure.Allure;
 import org.testng.ITestResult;
+import ru.opencart.appmanager.AuthHelper;
+import ru.opencart.appmanager.CartHelper;
+import ru.opencart.appmanager.NavigationHelper;
+import ru.opencart.appmanager.RegistrationHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -22,7 +26,7 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private CartHelper cartHelper;
 
-    protected void init() {
+    public void init() {
         browser = Playwright
                 .create()
                 .webkit()
@@ -44,14 +48,14 @@ public class ApplicationManager {
         cartHelper = new CartHelper(page);
     }
 
-    protected void stop() {
+    public void stop() {
         if (browser != null) {
             browser.close();
             browser = null;
         }
     }
 
-    protected void attachFilesToTest(ITestResult result) throws IOException {
+    public void attachFilesToTest(ITestResult result) throws IOException {
         if (!result.isSuccess()) {
             String uuid = UUID.randomUUID().toString();
             byte[] screenshot = page.screenshot(new Page.ScreenshotOptions()

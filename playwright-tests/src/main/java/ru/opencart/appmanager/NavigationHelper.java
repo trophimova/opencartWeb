@@ -1,15 +1,15 @@
-package ru.opencart;
+package ru.opencart.appmanager;
 
 
 import com.microsoft.playwright.Page;
+import ru.opencart.appmanager.HelperBase;
 import ru.opencart.readProperties.ConfigProvider;
 
 public class NavigationHelper extends HelperBase {
 
-    private final Page page;
 
     public NavigationHelper(Page page) {
-        this.page = page;
+        super(page);
     }
 
     public void goToMainPage() {
@@ -20,6 +20,11 @@ public class NavigationHelper extends HelperBase {
         page.click("xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[2]//a");
     }
 
+    public void goToRegPage() {
+        page.click(personalAccount);
+        page.click(registration);
+    }
+
     public void signOut() {
         page.click(personalAccount);
         page.click(signOut);
@@ -27,4 +32,7 @@ public class NavigationHelper extends HelperBase {
 
     private final String personalAccount = "xpath=.//a[@title='Личный кабинет']";
     private final String signOut = "xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[5]//a";
+    private final String registration = "xpath=.//ul[@class='dropdown-menu dropdown-menu-right']//a";
+
+
 }
