@@ -10,6 +10,7 @@ import ru.opencart.model.AuthData;
 
 public class AuthHelper extends HelperBase {
 
+
     public AuthHelper(WebDriver wd) {
         super(wd);
     }

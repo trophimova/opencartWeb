@@ -7,12 +7,14 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginWithValidCredentials() {
-        page.navigate("https://learn-qa.ru/index.php?route=account/login");
-        page.fill("[id=input-email]", "tegg88st@mail.ru");
-        page.fill("[id=input-password]", "123456");
-        page.click("[type=submit]");
-        Assert.assertTrue(page.locator("xpath=.//div[@id='content']//h2[1]").textContent().contains("Моя учетная запись!"));
+        //AuthHelper authHelper = new AuthHelper(page);
+        goTo().goToMainPage();
+        goTo().goToLoginPage();
+        authorization().login();
+        Assert.assertEquals(authorization().getTitleName(),authorization().successLoginTitle );
     }
+
+
 
 
 }
