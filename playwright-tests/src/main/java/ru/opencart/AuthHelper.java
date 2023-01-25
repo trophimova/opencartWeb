@@ -1,8 +1,8 @@
 package ru.opencart;
 
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import ru.opencart.model.AuthData;
 
 public class AuthHelper extends HelperBase {
 
@@ -13,19 +13,19 @@ public class AuthHelper extends HelperBase {
     }
 
 
-    public void login() {
-        fillLoginCredentials();
+    public void login(AuthData authData) {
+        fillLoginCredentials(authData);
         confirmLogin();
     }
 
     private void confirmLogin() {
-        //submit.click();
-        page.click("[type=submit]");
+
+        page.click(submit);
     }
 
-    private void fillLoginCredentials() {
-        page.fill("[id=input-email]", "tegg88st@mail.ru");
-        page.fill("[id=input-password]", "123456");
+    private void fillLoginCredentials(AuthData authData) {
+        page.fill(inputEmail, authData.getEmail());
+        page.fill(inputPassword, authData.getPassword());
 
     }
 
@@ -34,6 +34,7 @@ public class AuthHelper extends HelperBase {
     }
 
     public static String successLoginTitle = "Моя учетная запись";
-
-    //Locator submit = page.locator("[type=submit]");
+    private String inputEmail = "[id=input-email]";
+    private String inputPassword = "[id=input-password]";
+    private String submit = "[type=submit]";
 }
