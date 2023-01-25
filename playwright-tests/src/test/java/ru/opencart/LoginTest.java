@@ -7,10 +7,10 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginWithValidCredentials() {
-        goTo().goToMainPage();
-        goTo().goToLoginPage();
-        authorization().login();
-        Assert.assertEquals(authorization().getTitleName(),authorization().successLoginTitle );
+        app.goTo().goToMainPage();
+        app.goTo().goToLoginPage();
+        app.authorization().login();
+        Assert.assertEquals(app.authorization().getTitleName(), app.authorization().successLoginTitle );
     }
 
 

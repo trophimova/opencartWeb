@@ -7,23 +7,28 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 
-public class BaseTest extends ApplicationManager{
+public class BaseTest {
 
+
+    protected final ApplicationManager app = new ApplicationManager();
 
     @BeforeSuite
     public void setUp() {
-        init();
+        app.init();
     }
 
     @AfterSuite
     public void tearDown() {
-        stop();
+        app.stop();
     }
 
 
     @AfterMethod
         public void attachFilesToFailedTest(ITestResult result) throws IOException {
-        attachFilesToTest(result);
+        app.attachFilesToTest(result);
     }
 
+    public ApplicationManager getApp() {
+        return app;
+    }
 }
