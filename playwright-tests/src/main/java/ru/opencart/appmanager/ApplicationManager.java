@@ -3,10 +3,6 @@ package ru.opencart.appmanager;
 import com.microsoft.playwright.*;
 import io.qameta.allure.Allure;
 import org.testng.ITestResult;
-import ru.opencart.appmanager.AuthHelper;
-import ru.opencart.appmanager.CartHelper;
-import ru.opencart.appmanager.NavigationHelper;
-import ru.opencart.appmanager.RegistrationHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -27,10 +23,9 @@ public class ApplicationManager {
     private CartHelper cartHelper;
 
     public void init() {
-        browser = Playwright
-                .create()
-                .webkit()
-                .launch(new BrowserType.LaunchOptions().setHeadless(false));
+        Playwright playwright = Playwright.create();
+        browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+
 
         context = browser.newContext();
 
