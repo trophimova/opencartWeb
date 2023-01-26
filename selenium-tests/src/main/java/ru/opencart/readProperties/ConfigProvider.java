@@ -12,11 +12,11 @@ public interface ConfigProvider {
                 : ConfigFactory.load("application.conf");
     }
 
-    String MAINPAGE = readConfig().getString("mainPage");
-    String BROWSER_OPTIONS = readConfig().getString("browserOptions");
-    String USER_EMAIL = readConfig().getString("userParams.email");
-    String USER_PASSWORD = readConfig().getString("userParams.password");
-    int IMPLICITWAIT = readConfig().getInt("implicitWait");
+    String MAINPAGE = config.getString("mainPage");
+    String BROWSER_OPTIONS = config.getString("browserOptions");
+    String USER_EMAIL = config.getString("userParams.email");
+    String USER_PASSWORD = config.getString("userParams.password");
+    int IMPLICITWAIT = config.getInt("implicitWait");
 
 
 }

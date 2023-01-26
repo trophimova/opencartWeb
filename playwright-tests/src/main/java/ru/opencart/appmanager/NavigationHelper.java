@@ -17,7 +17,12 @@ public class NavigationHelper extends HelperBase {
     }
     public void goToLoginPage() {
         page.click(personalAccount);
-        page.click("xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[2]//a");
+        page.click(authorization);
+    }
+
+    public void goToCart() {
+        goToMainPage();
+        page.click(cart);
     }
 
     public void goToRegPage() {
@@ -33,6 +38,7 @@ public class NavigationHelper extends HelperBase {
     private final String personalAccount = "xpath=.//a[@title='Личный кабинет']";
     private final String signOut = "xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[5]//a";
     private final String registration = "xpath=.//ul[@class='dropdown-menu dropdown-menu-right']//a";
-
+    private final String authorization = "xpath=.//ul[@class='dropdown-menu dropdown-menu-right']/li[2]//a";
+    private final String cart = "xpath=.//ul[@class= 'list-inline']/li[4]/a";
 
 }
