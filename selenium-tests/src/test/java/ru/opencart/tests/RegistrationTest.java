@@ -76,13 +76,11 @@ public class RegistrationTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной регистрации")
     public void testPositiveRegistration(RegData reg) throws InterruptedException {
-
         app.goTo().goToMainPage();
         app.goTo().goToRegPage();
         int count = app.registration().count(By.className("form-control"));
         app.registration().setValidRegistration(reg);
         assertThat(6, equalTo(count - 1));
-
         app.registration().title();
         String nameTitle = app.registration().getNameTitle();
         assertThat(nameTitle, equalTo(RegistrationHelper.successRegMessage));

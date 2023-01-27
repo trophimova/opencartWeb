@@ -20,7 +20,6 @@ public class AddToCartTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной операции добавления в корзину")
     public void testPositiveAddToCart() throws InterruptedException {
-
         app.goTo().goToCart();
         List<ProductData> before = app.cart().list();
         app.cart().add(new ProductData()
@@ -32,8 +31,5 @@ public class AddToCartTest extends TestBase {
         app.goTo().goToCart();
         List<ProductData> after = app.cart().list();
         assertThat(before.size() + 2, equalTo(after.size()));
-
-
-
     }
 }

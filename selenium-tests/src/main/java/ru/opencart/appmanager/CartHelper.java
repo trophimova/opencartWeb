@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.opencart.model.ProductData;
 
 
@@ -50,9 +51,7 @@ public class CartHelper extends HelperBase {
         List<ProductData> products = new ArrayList<ProductData>();
         List<WebElement> elements = wd.findElements(By.xpath("//div[@class = 'table-responsive']//tbody//tr"));
         for (WebElement element : elements) {
-            ProductData product = new ProductData()
-                    .withProductName(null)
-                    .withProductGroup(null);
+            ProductData product = new ProductData();
             products.add(product);
         }
         return products;

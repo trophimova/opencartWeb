@@ -37,7 +37,6 @@ public class AuthorizationTest extends TestBase {
         app.authorization().title();
         String nameTitle = app.authorization().getNameTitle();
         assertThat(nameTitle, equalTo(AuthHelper.successAuthTitle));
-
     }
 
 

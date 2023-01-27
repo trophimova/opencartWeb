@@ -22,11 +22,11 @@ public class CartHelper extends HelperBase {
 
     private void addProduct(String locator) {
         page.locator(locator).click();
-        page.pause();
+        //page.pause();
         if(page.isVisible(select)) {
             page.selectOption(select,"15");
         }
-        chooseProductGroup(cartButton);
+        page.locator(cartButton).click();
     }
 
     private void chooseProductGroup(String locator) {

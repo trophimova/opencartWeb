@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.BrowserType;
 import ru.opencart.readProperties.ConfigProvider;
 
-import java.io.IOException;
+
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -22,30 +22,36 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private RegistrationHelper registrationHelper;
     private CartHelper cartHelper;
-    private String browser;
+    private final String browser;
 
 
     public ApplicationManager(String browser) {
         this.browser = browser;
     }
 
-    public void init() throws IOException {
-        if (browser.equals(BrowserType.FIREFOX)) {
-            WebDriverManager.firefoxdriver().setup();
-            FirefoxOptions options = new FirefoxOptions();
-
-            options.addArguments(ConfigProvider.BROWSER_OPTIONS);
-            wd = new FirefoxDriver(options);
-        } else if (browser.equals(BrowserType.CHROME)) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments(ConfigProvider.BROWSER_OPTIONS);
-            wd = new ChromeDriver(options);
-        } else if (browser.equals(BrowserType.EDGE)) {
-            WebDriverManager.edgedriver().setup();
-            EdgeOptions options = new EdgeOptions();
-            options.addArguments(ConfigProvider.BROWSER_OPTIONS);
-            wd = new EdgeDriver(options);
+    public void init() {
+        switch (browser) {
+            case BrowserType.FIREFOX: {
+                WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments(ConfigProvider.BROWSER_OPTIONS);
+                wd = new FirefoxDriver(options);
+                break;
+            }
+            case BrowserType.CHROME: {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments(ConfigProvider.BROWSER_OPTIONS);
+                wd = new ChromeDriver(options);
+                break;
+            }
+            case BrowserType.EDGE: {
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions options = new EdgeOptions();
+                options.addArguments(ConfigProvider.BROWSER_OPTIONS);
+                wd = new EdgeDriver(options);
+                break;
+            }
         }
         wd.manage().timeouts().implicitlyWait(ConfigProvider.IMPLICITWAIT, TimeUnit.SECONDS);
         registrationHelper = new RegistrationHelper(wd);
