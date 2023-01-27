@@ -16,6 +16,7 @@ public interface ConfigProvider {
     String USER_EMAIL = config.getString("userParams.email");
     String USER_PASSWORD = config.getString("userParams.password");
 
+    String BROWSER = config.getString("browser");
     int REG_DATA_COUNT = config.getInt("regDataCount");
 
 

@@ -18,9 +18,11 @@ dependencies {
     implementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
-tasks.withType(Test) {
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
+
+
+task testLogin(type: Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-login.xml'
     }
 }
 
