@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.opencart.appmanager.CartHelper.*;
 
 
 public class AddToCartTest extends TestBase {
@@ -22,12 +23,8 @@ public class AddToCartTest extends TestBase {
     public void testPositiveAddToCart() throws InterruptedException {
         app.goTo().goToCart();
         List<ProductData> before = app.cart().list();
-        app.cart().add(new ProductData()
-                .withProductName(CartHelper.camera1)
-                .withProductGroup(CartHelper.cameras));
-        app.cart().add(new ProductData()
-                .withProductName(CartHelper.camera2)
-                .withProductGroup(CartHelper.cameras));
+        app.cart().add(new ProductData().withProductName(camera1).withProductGroup(cameras));
+        app.cart().add(new ProductData().withProductName(camera2).withProductGroup(cameras));
         app.goTo().goToCart();
         List<ProductData> after = app.cart().list();
         assertThat(before.size() + 2, equalTo(after.size()));

@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.opencart.appmanager.CartHelper.*;
 
 
 public class DeleteFromCartTest extends TestBase {
@@ -18,12 +19,8 @@ public class DeleteFromCartTest extends TestBase {
     public void ensurePreconditions() {
         app.goTo().goToCart();
         if (app.cart().list().size() == 0) {
-            app.cart().add(new ProductData()
-                    .withProductName(CartHelper.camera1)
-                    .withProductGroup(CartHelper.cameras));
-            app.cart().add(new ProductData()
-                    .withProductName(CartHelper.camera2)
-                    .withProductGroup(CartHelper.cameras));
+            app.cart().add(new ProductData().withProductName(camera1).withProductGroup(cameras));
+            app.cart().add(new ProductData().withProductName(camera2).withProductGroup(cameras));
             app.goTo().goToCart();
         }
     }
