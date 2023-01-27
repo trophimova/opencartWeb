@@ -46,7 +46,6 @@ public class RegistrationTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной регистрации")
     public void registerWithValidData(RegData reg) {
-
         app.goTo().goToMainPage();
         app.goTo().goToRegPage();
         app.registration().setValidRegistration(reg);

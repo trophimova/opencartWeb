@@ -3,6 +3,7 @@ package ru.opencart.appmanager;
 import com.microsoft.playwright.*;
 import io.qameta.allure.Allure;
 import org.testng.ITestResult;
+import ru.opencart.readProperties.ConfigProvider;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -14,17 +15,35 @@ import java.util.UUID;
 public class ApplicationManager {
     protected Page page;
     protected BrowserContext context;
-    protected Boolean isTraceEnabled = false;
-    private Browser browser;
+    protected Boolean isTraceEnabled = true;
 
     private AuthHelper authHelper;
     private NavigationHelper navigationHelper;
     private RegistrationHelper registrationHelper;
     private CartHelper cartHelper;
+    protected Browser browser;
+    private final String browserType;
+
+    public ApplicationManager(String browserType) {
+        this.browserType = browserType;
+    }
 
     public void init() {
         Playwright playwright = Playwright.create();
-        browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        switch (browserType) {
+            case "firefox": {
+                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                break;
+            }
+            case "chromium": {
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                break;
+            }
+            case "webkit": {
+                browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                break;
+            }
+        }
 
 
         context = browser.newContext();
@@ -49,6 +68,7 @@ public class ApplicationManager {
             browser = null;
         }
     }
+
 
     public void attachFilesToTest(ITestResult result) throws IOException {
         if (!result.isSuccess()) {

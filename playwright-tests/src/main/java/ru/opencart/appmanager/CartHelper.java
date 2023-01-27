@@ -1,6 +1,7 @@
 package ru.opencart.appmanager;
 
 
+import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
 import ru.opencart.model.ProductData;
@@ -15,14 +16,16 @@ public class CartHelper extends HelperBase {
         super(page);
     }
 
-    public void add(ProductData productData) {
+    public void add(ProductData productData) throws InterruptedException {
         chooseProductGroup(productData.getProductGroup());
         addProduct(productData.getProductName());
     }
 
-    private void addProduct(String locator) {
+    private void addProduct(String locator) throws InterruptedException {
         page.locator(locator).click();
-        //page.pause();
+
+        Thread.sleep(1000l);
+
         if(page.isVisible(select)) {
             page.selectOption(select,"15");
         }

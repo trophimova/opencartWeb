@@ -15,7 +15,7 @@ import static ru.opencart.appmanager.CartHelper.*;
 public class DeleteFromCartTest extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
+    public void ensurePreconditions() throws InterruptedException {
         app.goTo().goToCart();
         if (app.cart().list().size() == 0) {
             app.cart().add(new ProductData().withProductGroup(cameras).withProductName(camera1));
@@ -31,17 +31,13 @@ public class DeleteFromCartTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной операции удаления из корзины")
     public void testPositiveDeleteFromCart() throws InterruptedException {
-
         List<ProductData> before = app.cart().list();
         int index = before.size() - 1;
         app.cart().delete(index);
-        Thread.sleep(1000l); // тут нужно ожидание иначе падает
+        app.goTo().goToCart();
         List<ProductData> after = app.cart().list();
         assertThat(after.size(), equalTo(index));
         before.remove(index);
-
         assertThat(after, equalTo(before));
-
-
     }
 }

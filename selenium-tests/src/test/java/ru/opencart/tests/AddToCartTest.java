@@ -27,6 +27,6 @@ public class AddToCartTest extends TestBase {
         app.cart().add(new ProductData().withProductName(camera2).withProductGroup(cameras));
         app.goTo().goToCart();
         List<ProductData> after = app.cart().list();
-        assertThat(before.size() + 2, equalTo(after.size()));
+        assertThat(after.size(), equalTo(before.size() + 2));
     }
 }
