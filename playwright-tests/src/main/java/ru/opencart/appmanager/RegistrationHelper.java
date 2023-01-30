@@ -1,6 +1,7 @@
 package ru.opencart.appmanager;
 
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import ru.opencart.model.RegData;
 
@@ -19,33 +20,31 @@ public class RegistrationHelper extends HelperBase {
     }
 
     private void confirmRegForm() {
-        page.click(submit);
+        submit.click();
     }
 
     private void fillRegForm(RegData regData) {
-        page.fill(inputFirstname, regData.getUserFirstName());
-        page.fill(inputLastname, regData.getUserLastName());
-        page.fill(inputEmail, regData.getEmail());
-        page.fill(inputTelephone, regData.getTelephone());
-        page.fill(inputPassword, regData.getPassword());
-        page.fill(inputConfirm, regData.getPasswordConfirm());
-        page.click(checkbox);
+        inputFirstname.fill(regData.getUserFirstName());
+        inputLastname.fill(regData.getUserLastName());
+        inputEmail.fill(regData.getEmail());
+        inputTelephone.fill(regData.getTelephone());
+        inputPassword.fill(regData.getPassword());
+        inputConfirm.fill(regData.getPasswordConfirm());
+        checkbox.click();
     }
 
     public String getTitleName() {
-        return page.locator(title).textContent();
+        return title.textContent();
     }
 
-    private final String inputFirstname = "xpath=.//input[@id='input-firstname']";
-    private final String inputLastname = "xpath=.//input[@id='input-lastname']";
-    private final String inputEmail = "xpath=.//input[@id='input-email']";
-    private final String inputTelephone = "xpath=.//input[@id='input-telephone']";
-    private final String inputPassword = "xpath=.//input[@id='input-password']";
-    private final String inputConfirm = "xpath=.//input[@id='input-confirm']";
-
-    private final String title = "xpath=.//div[@id='content']//h1";
-
-    private final String submit = "xpath=.//input[@type='submit']";
+    Locator inputFirstname = page.locator("xpath=.//input[@id='input-firstname']");
+    Locator inputLastname = page.locator("xpath=.//input[@id='input-lastname']");
+    Locator inputEmail = page.locator("xpath=.//input[@id='input-email']");
+    Locator inputTelephone = page.locator("xpath=.//input[@id='input-telephone']");
+    Locator inputPassword = page.locator("xpath=.//input[@id='input-password']");
+    Locator inputConfirm = page.locator("xpath=.//input[@id='input-confirm']");
+    Locator title = page.locator("xpath=.//div[@id='content']//h1");
+    Locator submit = page.locator("xpath=.//input[@type='submit']");
+    Locator checkbox = page.locator("xpath=.//input[@type='checkbox']");
     public static String successRegMessage = "Ваша учетная запись создана!";
-    private String checkbox = "xpath=.//input[@type='checkbox']";
 }

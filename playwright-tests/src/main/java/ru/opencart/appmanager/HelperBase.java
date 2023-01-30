@@ -13,13 +13,5 @@ public class HelperBase {
     }
 
 
-    protected boolean isElementPresent(String locator) {
-        try {
-            page.locator(locator).isEditable();
-            return true;
-        } catch (TimeoutError e) {
-            return false;
-        }
 
-    }
 }

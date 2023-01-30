@@ -2,8 +2,12 @@ package ru.opencart.appmanager;
 
 
 import com.microsoft.playwright.ElementHandle;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.TimeoutError;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import ru.opencart.model.ProductData;
 
 import java.util.ArrayList;
@@ -24,11 +28,22 @@ public class CartHelper extends HelperBase {
     private void addProduct(String locator) {
         page.locator(locator).click();
         if(isElementPresent(select)) {
-            page.locator(select).click();
-            page.selectOption(select,"15");
+            select.click();
+            select.selectOption("15");
         }
-        page.locator(cartButton).click();
+        cartButton.click();
     }
+
+    protected boolean isElementPresent(Locator locator) {
+        try {
+            locator.isEditable();
+            return true;
+        } catch (TimeoutError e) {
+            return false;
+        }
+
+    }
+
 
     private void chooseProductGroup(String locator) {
         page.click(locator);
@@ -68,11 +83,19 @@ public class CartHelper extends HelperBase {
     public void delete(int index) {
         page.querySelectorAll("xpath=//button[@class = 'btn btn-danger']").get(index).click();
     }
-    public static final String cameras = "li:nth-child(7) > a";
-    private final String cartButton = "[id=button-cart]";
+
+
+
+
+    Locator cartButton = page.locator("[id=button-cart]");
     public static final String camera1 = ".product-layout:nth-child(1) .caption a";
     public static final String camera2 = ".product-layout:nth-child(2) .caption a";
-    private final String select = "[id=input-option226]";
+    Locator select = page.locator("[id=input-option226]");
+    public static final String cameras = "li:nth-child(7) > a";
+//    private final String cartButton = "[id=button-cart]";
+//    public static final String camera1 = ".product-layout:nth-child(1) .caption a";
+//    public static final String camera2 = ".product-layout:nth-child(2) .caption a";
+//    private final String select = "[id=input-option226]";
 
 
 

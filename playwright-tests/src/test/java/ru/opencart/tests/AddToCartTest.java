@@ -2,6 +2,7 @@ package ru.opencart.tests;
 
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
+import ru.opencart.appmanager.CartHelper;
 import ru.opencart.model.ProductData;
 
 import java.util.List;
