@@ -45,7 +45,7 @@ public class RegistrationTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной регистрации")
-    public void registerWithValidData(RegData reg) {
+    public void registerWithValidCredentials(RegData reg) {
         app.goTo().goToMainPage();
         app.goTo().goToRegPage();
         app.registration().setValidRegistration(reg);
