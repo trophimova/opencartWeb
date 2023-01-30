@@ -31,7 +31,7 @@ public class DeleteFromCartTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной операции удаления из корзины")
-    public void testPositiveDeleteFromCart() throws InterruptedException {
+    public void testPositiveDeleteFromCart() {
         List<ProductData> before = app.cart().list();
         int index = before.size() - 1;
         app.cart().delete(index);
