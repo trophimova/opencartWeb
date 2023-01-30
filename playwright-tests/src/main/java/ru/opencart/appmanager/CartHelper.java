@@ -1,9 +1,9 @@
 package ru.opencart.appmanager;
 
 
-import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.TimeoutError;
 import ru.opencart.model.ProductData;
 
 import java.util.ArrayList;
@@ -16,17 +16,15 @@ public class CartHelper extends HelperBase {
         super(page);
     }
 
-    public void add(ProductData productData) throws InterruptedException {
+    public void add(ProductData productData) {
         chooseProductGroup(productData.getProductGroup());
         addProduct(productData.getProductName());
     }
 
-    private void addProduct(String locator) throws InterruptedException {
+    private void addProduct(String locator) {
         page.locator(locator).click();
-
-        Thread.sleep(1000l);
-
-        if(page.isVisible(select)) {
+        if(isElementPresent(select)) {
+            page.locator(select).click();
             page.selectOption(select,"15");
         }
         page.locator(cartButton).click();
@@ -38,6 +36,15 @@ public class CartHelper extends HelperBase {
 
     public List<ProductData> list() {
         List<ProductData> products = new ArrayList<ProductData>();
+        if (waitForElements("xpath=//div[@class = 'table-responsive']//tbody//tr")) {
+            List<ElementHandle> elements = page.querySelectorAll("xpath=//div[@class = 'table-responsive']//tbody//tr");
+            for (ElementHandle element : elements) {
+                ProductData product = new ProductData();
+                products.add(product);
+            }
+            return products;
+        }
+
         List<ElementHandle> elements = page.querySelectorAll("xpath=//div[@class = 'table-responsive']//tbody//tr");
         for (ElementHandle element : elements) {
             ProductData product = new ProductData();
@@ -45,6 +52,18 @@ public class CartHelper extends HelperBase {
         }
         return products;
     }
+
+    protected boolean waitForElements(String locator) {
+        try {
+            page.locator(locator).first().waitFor();
+            return true;
+        } catch (TimeoutError e) {
+            return false;
+        }
+
+    }
+
+
 
     public void delete(int index) {
         page.querySelectorAll("xpath=//button[@class = 'btn btn-danger']").get(index).click();

@@ -18,7 +18,7 @@ public class AddToCartTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной операции добавления в корзину")
-    public void testPositiveAddToCart() throws InterruptedException {
+    public void testPositiveAddToCart() {
         app.goTo().goToCart();
         List<ProductData> before = app.cart().list();
         app.cart().add(new ProductData().withProductGroup(cameras).withProductName(camera1));

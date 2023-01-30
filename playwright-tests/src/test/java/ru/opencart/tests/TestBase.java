@@ -1,15 +1,14 @@
 package ru.opencart.tests;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import ru.opencart.appmanager.ApplicationManager;
-import ru.opencart.readProperties.ConfigProvider;
 
 import java.io.IOException;
 
-import static ru.opencart.readProperties.ConfigProvider.*;
+import static ru.opencart.readProperties.ConfigProvider.BROWSER;
 
 public class TestBase {
 

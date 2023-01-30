@@ -3,7 +3,6 @@ package ru.opencart.appmanager;
 import com.microsoft.playwright.*;
 import io.qameta.allure.Allure;
 import org.testng.ITestResult;
-import ru.opencart.readProperties.ConfigProvider;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

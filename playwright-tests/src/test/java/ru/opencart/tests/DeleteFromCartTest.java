@@ -3,7 +3,6 @@ package ru.opencart.tests;
 import io.qameta.allure.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.opencart.appmanager.CartHelper;
 import ru.opencart.model.ProductData;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import static ru.opencart.appmanager.CartHelper.*;
 public class DeleteFromCartTest extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() throws InterruptedException {
+    public void ensurePreconditions() {
         app.goTo().goToCart();
         if (app.cart().list().size() == 0) {
             app.cart().add(new ProductData().withProductGroup(cameras).withProductName(camera1));
@@ -30,7 +29,7 @@ public class DeleteFromCartTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной операции удаления из корзины")
-    public void testPositiveDeleteFromCart() throws InterruptedException {
+    public void testPositiveDeleteFromCart() {
         List<ProductData> before = app.cart().list();
         int index = before.size() - 1;
         app.cart().delete(index);

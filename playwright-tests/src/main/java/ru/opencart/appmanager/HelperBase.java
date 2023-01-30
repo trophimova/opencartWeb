@@ -1,8 +1,8 @@
 package ru.opencart.appmanager;
 
 
-import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.TimeoutError;
 
 public class HelperBase {
 
@@ -13,4 +13,13 @@ public class HelperBase {
     }
 
 
+    protected boolean isElementPresent(String locator) {
+        try {
+            page.locator(locator).isEditable();
+            return true;
+        } catch (TimeoutError e) {
+            return false;
+        }
+
+    }
 }

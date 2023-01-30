@@ -1,7 +1,6 @@
 package ru.opencart.appmanager;
 
 
-import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
 import ru.opencart.model.AuthData;
 
