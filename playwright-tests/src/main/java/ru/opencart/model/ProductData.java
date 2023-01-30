@@ -1,26 +1,28 @@
 package ru.opencart.model;
 
+import com.microsoft.playwright.Locator;
+
 import java.util.Objects;
 
 public class ProductData {
-    private String productGroup;
-    private String productName;
+    private Locator productGroup;
+    private Locator productName;
 
 
-    public String getProductGroup() {
+    public Locator getProductGroup() {
         return productGroup;
     }
 
-    public String getProductName() {
+    public Locator getProductName() {
         return productName;
     }
 
-    public ProductData withProductName(String productName) {
+    public ProductData withProductName(Locator productName) {
         this.productName = productName;
         return this;
     }
 
-    public ProductData withProductGroup(String productGroup) {
+    public ProductData withProductGroup(Locator productGroup) {
         this.productGroup = productGroup;
         return this;
     }

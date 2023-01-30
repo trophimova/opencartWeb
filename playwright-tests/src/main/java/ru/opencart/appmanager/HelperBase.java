@@ -6,7 +6,7 @@ import com.microsoft.playwright.TimeoutError;
 
 public class HelperBase {
 
-    protected Page page;
+    protected static Page page;
 
     public HelperBase(Page page) {
         this.page = page;

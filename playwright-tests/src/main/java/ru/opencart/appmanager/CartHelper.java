@@ -25,8 +25,8 @@ public class CartHelper extends HelperBase {
         addProduct(productData.getProductName());
     }
 
-    private void addProduct(String locator) {
-        page.locator(locator).click();
+    private void addProduct(Locator locator) {
+        locator.click();
         if(isElementPresent(select)) {
             select.click();
             select.selectOption("15");
@@ -45,8 +45,8 @@ public class CartHelper extends HelperBase {
     }
 
 
-    private void chooseProductGroup(String locator) {
-        page.click(locator);
+    private void chooseProductGroup(Locator locator) {
+        locator.click();
     }
 
     public List<ProductData> list() {
@@ -88,14 +88,13 @@ public class CartHelper extends HelperBase {
 
 
     Locator cartButton = page.locator("[id=button-cart]");
-    public static final String camera1 = ".product-layout:nth-child(1) .caption a";
-    public static final String camera2 = ".product-layout:nth-child(2) .caption a";
+
     Locator select = page.locator("[id=input-option226]");
-    public static final String cameras = "li:nth-child(7) > a";
-//    private final String cartButton = "[id=button-cart]";
-//    public static final String camera1 = ".product-layout:nth-child(1) .caption a";
-//    public static final String camera2 = ".product-layout:nth-child(2) .caption a";
-//    private final String select = "[id=input-option226]";
+    public static Locator cameras = page.locator("li:nth-child(7) > a");
+
+    public static Locator camera1 = page.locator(".product-layout:nth-child(1) .caption a");
+    public static Locator camera2 = page.locator(".product-layout:nth-child(2) .caption a");
+
 
 
 
