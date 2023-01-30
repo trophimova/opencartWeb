@@ -10,6 +10,7 @@ import ru.opencart.readProperties.ConfigProvider;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.opencart.readProperties.ConfigProvider.*;
 
 
 public class AuthorizationTest extends TestBase {
@@ -31,9 +32,7 @@ public class AuthorizationTest extends TestBase {
         app.goTo().goToLoginPage();
         int count = app.authorization().count(By.className("form-group"));
         assertThat(2, equalTo(count));
-        app.authorization().login(new AuthData()
-                .withEmail(ConfigProvider.USER_EMAIL)
-                .withPassword(ConfigProvider.USER_PASSWORD));
+        app.authorization().login(new AuthData().withEmail(USER_EMAIL).withPassword(USER_PASSWORD));
         app.authorization().title();
         String nameTitle = app.authorization().getNameTitle();
         assertThat(nameTitle, equalTo(AuthHelper.successAuthTitle));

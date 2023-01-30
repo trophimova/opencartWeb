@@ -75,7 +75,7 @@ public class RegistrationTest extends TestBase {
     @Link("https://github.com/trophimova/opencartWeb")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Проверка успешной регистрации")
-    public void testPositiveRegistration(RegData reg) throws InterruptedException {
+    public void testPositiveRegistration(RegData reg) {
         app.goTo().goToMainPage();
         app.goTo().goToRegPage();
         int count = app.registration().count(By.className("form-control"));
