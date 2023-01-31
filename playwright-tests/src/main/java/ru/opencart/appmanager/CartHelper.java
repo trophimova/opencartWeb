@@ -27,21 +27,11 @@ public class CartHelper extends HelperBase {
 
     private void addProduct(Locator locator) {
         locator.click();
-        if(isElementPresent(select)) {
+        if(select.isVisible()) {
             select.click();
             select.selectOption("15");
         }
         cartButton.click();
-    }
-
-    protected boolean isElementPresent(Locator locator) {
-        try {
-            locator.isEditable();
-            return true;
-        } catch (TimeoutError e) {
-            return false;
-        }
-
     }
 
 
